@@ -1,8 +1,8 @@
 package com.pkw.find.violet;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
-import org.junit.Before;
 import org.junit.Test;
 
 public class GridEqualityTests {
@@ -31,5 +31,14 @@ public class GridEqualityTests {
 		Grid expected = new Grid();
 		expected.addBlockAt(redBlock, topLeft);
 		assertTrue(actual.equals(expected));
+	}
+
+	@Test
+	public void testGridsHaveBlocksNotSameLocation() {
+		Grid actual = new Grid();
+		actual.addBlockAt(redBlock, topLeft);
+		Grid notExpected = new Grid();
+		notExpected.addBlockAt(redBlock, new Position(3, 0));
+		assertFalse(actual.equals(notExpected));
 	}
 }

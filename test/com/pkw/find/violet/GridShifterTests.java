@@ -24,10 +24,10 @@ public class GridShifterTests {
 		grid = new Grid();
 	}
 
-	private void printGrids(String actual, String expected) {
-		System.out.println("\nActual:\n" + actual + "\nExpected:\n" + expected
-				+ "\n");
-	}
+//	private void printGrids(String actual, String expected) {
+//		System.out.println("\nActual:\n" + actual + "\nExpected:\n" + expected
+//				+ "\n");
+//	}
 
 	@Test
 	public void testOneREDBlockShiftRight() {

@@ -76,8 +76,24 @@ public class Grid {
 			return false;
 		} else if (other == this) {
 			return true;
-		} else {
+		} else if (other instanceof Grid) {
+			Grid otherGrid = (Grid) other;
+			Position currentPosition = new Position(0, 0);
+			while (currentPosition.getY() <= BOTTOM_Y) {
+				while (currentPosition.getX() <= RIGHT_X) {
+					Block block = getBlockAt(currentPosition);
+					Block otherBlock = otherGrid.getBlockAt(currentPosition);
+					if (!block.equals(otherBlock)) {
+						return false;
+					}
+					currentPosition.moveRight();
+				}
+				currentPosition.setX(0);
+				currentPosition.moveDown();
+			}
 			return true;
+		} else {
+			return false;
 		}
 	}
 }
