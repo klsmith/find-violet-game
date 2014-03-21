@@ -6,6 +6,10 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class GridEqualityTests {
+
+	private Block redBlock = new Block(Color.RED);
+	private Position topLeft = new Position(0, 0);
+
 	@Test
 	public void testGridDoesNotEqualNull() {
 		Grid actual = new Grid();
@@ -21,11 +25,11 @@ public class GridEqualityTests {
 	}
 
 	@Test
-	public void testGridsHaveBlocks_OneRedBlock() {
+	public void testGridsHaveBlocksAtSameLocation() {
 		Grid actual = new Grid();
-		actual.addBlockAt(new Block(Color.RED), new Position(0, 0));
+		actual.addBlockAt(redBlock, topLeft);
 		Grid expected = new Grid();
-		expected.addBlockAt(new Block(Color.RED), new Position(0, 0));
+		expected.addBlockAt(redBlock, topLeft);
 		assertTrue(actual.equals(expected));
 	}
 }

@@ -15,10 +15,6 @@ public class Grid {
 			empty, empty, empty, empty,//
 			empty, empty, empty, empty };
 
-	public void removeBlockAt(Position position) {
-		addBlockAt(empty, position);
-	}
-
 	public void addBlockAt(Block block, Position position) {
 		array[getCoordinateValueOf(position)] = block;
 	}
@@ -80,10 +76,8 @@ public class Grid {
 			return false;
 		} else if (other == this) {
 			return true;
-		} else if (other instanceof Grid) {
-			return true;
 		} else {
-			return false;
+			return true;
 		}
 	}
 }
