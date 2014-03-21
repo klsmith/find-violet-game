@@ -78,13 +78,13 @@ public class Grid {
 			return true;
 		} else if (other instanceof Grid) {
 			Grid otherGrid = (Grid) other;
-			return compareValuesWith(otherGrid);
+			return hasSameBlockPositionsAs(otherGrid);
 		} else {
 			return false;
 		}
 	}
 
-	public boolean compareValuesWith(Grid otherGrid) {
+	public boolean hasSameBlockPositionsAs(Grid otherGrid) {
 		Position currentPosition = new Position(0, 0);
 		while (currentPosition.getY() <= BOTTOM_Y) {
 			while (currentPosition.getX() <= RIGHT_X) {
