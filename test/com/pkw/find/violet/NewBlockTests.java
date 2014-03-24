@@ -18,4 +18,5 @@ public class NewBlockTests {
 		NewBlock expected = NewBlock.RED;
 		assertEquals(expected, actual);
 	}
+	
 }
