@@ -1,18 +1,27 @@
 package com.pkw.find.violet;
 
 public enum NewBlock {
-					// original game values:
-	RED,			// 2
-	RED_ORANGE,		// 4
-	ORANGE,			// 8
-	YELLOW_ORANGE,	// 16
-	YELLOW,			// 32
-	YELLOW_GREEN,	// 64
-	GREEN,			// 128
-	BLUE_GREEN,		// 256
-	BLUE,			// 512
-	BLUE_VIOLET,	// 1024
-	VIOLET;			// 2048
+	RED("RED"), //
+	RED_ORANGE("ROR"), //
+	ORANGE("ORG"), //
+	YELLOW_ORANGE("YOR"), //
+	YELLOW("YLW"), //
+	YELLOW_GREEN("YGR"), //
+	GREEN("GRN"), //
+	BLUE_GREEN("BGR"), //
+	BLUE("BLU"), //
+	BLUE_VIOLET("BVL"), //
+	VIOLET("VLT");
+
+	private String abbreviation;
+
+	private NewBlock(String abbreviation) {
+		this.abbreviation = abbreviation;
+	}
+
+	public String getAbbreviation() {
+		return abbreviation;
+	}
 
 	public NewBlock getNext() {
 		return values()[(ordinal() + 1) % values().length];
