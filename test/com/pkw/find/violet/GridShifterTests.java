@@ -31,10 +31,10 @@ public class GridShifterTests {
 	public void testOneREDBlockShiftRight() {
 		grid.addBlockAt(Block.RED, topLeft);
 		grid = shifter.shiftRight(grid);
-		String actual = grid.toString();
+		Grid actual = grid.clone();
 		resetGrid();
 		grid.addBlockAt(Block.RED, topRight);
-		String expected = grid.toString();
+		Grid expected = grid.clone();
 		assertTrue(actual.equals(expected));
 	}
 
@@ -42,10 +42,10 @@ public class GridShifterTests {
 	public void testOneREDBlockShiftLeft() {
 		grid.addBlockAt(Block.RED, topRight);
 		grid = shifter.shiftLeft(grid);
-		String actual = grid.toString();
+		Grid actual = grid.clone();
 		resetGrid();
 		grid.addBlockAt(Block.RED, topLeft);
-		String expected = grid.toString();
+		Grid expected = grid.clone();
 		assertTrue(actual.equals(expected));
 	}
 
@@ -54,10 +54,10 @@ public class GridShifterTests {
 		grid.addBlockAt(Block.RED, topLeft);
 		grid = shifter.shiftRight(grid);
 		grid = shifter.shiftLeft(grid);
-		String actual = grid.toString();
+		Grid actual = grid.clone();
 		resetGrid();
 		grid.addBlockAt(Block.RED, topLeft);
-		String expected = grid.toString();
+		Grid expected = grid.clone();
 		assertTrue(actual.equals(expected));
 	}
 
@@ -65,10 +65,10 @@ public class GridShifterTests {
 	public void testRedBlockShiftRightMultipleLines() {
 		fillGridToBottomStartingAt(topLeft);
 		grid = shifter.shiftRight(grid);
-		String actual = grid.toString();
+		Grid actual = grid.clone();
 		resetGrid();
 		fillGridToBottomStartingAt(topRight);
-		String expected = grid.toString();
+		Grid expected = grid.clone();
 		assertTrue(actual.equals(expected));
 	}
 
@@ -83,10 +83,10 @@ public class GridShifterTests {
 	public void testREDBlockShiftLeftMultipleLines() {
 		fillGridToBottomStartingAt(topRight);
 		grid = shifter.shiftLeft(grid);
-		String actual = grid.toString();
+		Grid actual = grid.clone();
 		resetGrid();
 		fillGridToBottomStartingAt(topLeft);
-		String expected = grid.toString();
+		Grid expected = grid.clone();
 		assertTrue(actual.equals(expected));
 	}
 }
