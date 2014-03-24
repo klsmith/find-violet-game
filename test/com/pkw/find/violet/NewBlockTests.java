@@ -13,9 +13,9 @@ public class NewBlockTests {
 	}
 
 	@Test
-	public void testVIOLETgetNextIsRED() {
+	public void testVIOLETgetNextIsNONE() {
 		NewBlock actual = NewBlock.VIOLET.getNext();
-		NewBlock expected = NewBlock.RED;
+		NewBlock expected = NewBlock.NONE;
 		assertEquals(expected, actual);
 	}
 }

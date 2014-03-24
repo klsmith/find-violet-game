@@ -1,6 +1,7 @@
 package com.pkw.find.violet;
 
 public enum NewBlock {
+	NONE("   "), //
 	RED("RED"), //
 	RED_ORANGE("ROR"), //
 	ORANGE("ORG"), //
