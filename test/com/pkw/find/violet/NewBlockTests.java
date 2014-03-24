@@ -11,4 +11,11 @@ public class NewBlockTests {
 		NewBlock expected = NewBlock.RED_ORANGE;
 		assertEquals(expected, actual);
 	}
+	
+	@Test
+	public void testVIOLETgetNextIsRED() {
+		NewBlock actual = NewBlock.VIOLET.getNext();
+		NewBlock expected = NewBlock.RED;
+		assertEquals(expected, actual);
+	}
 }
