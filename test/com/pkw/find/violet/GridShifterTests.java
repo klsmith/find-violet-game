@@ -1,6 +1,5 @@
 package com.pkw.find.violet;
 
-import static com.pkw.find.violet.Color.RED;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
@@ -10,7 +9,6 @@ public class GridShifterTests {
 
 	private Grid grid;
 	private GridShifter shifter;
-	private final Block redBlock = new Block(RED);
 	private final Position topLeft = new Position(0, 0);
 	private final Position topRight = new Position(3, 0);
 
@@ -31,34 +29,34 @@ public class GridShifterTests {
 
 	@Test
 	public void testOneREDBlockShiftRight() {
-		grid.addBlockAt(redBlock, topLeft);
+		grid.addBlockAt(NewBlock.RED, topLeft);
 		grid = shifter.shiftRight(grid);
 		String actual = grid.toString();
 		resetGrid();
-		grid.addBlockAt(redBlock, topRight);
+		grid.addBlockAt(NewBlock.RED, topRight);
 		String expected = grid.toString();
 		assertTrue(actual.equals(expected));
 	}
 
 	@Test
 	public void testOneREDBlockShiftLeft() {
-		grid.addBlockAt(redBlock, topRight);
+		grid.addBlockAt(NewBlock.RED, topRight);
 		grid = shifter.shiftLeft(grid);
 		String actual = grid.toString();
 		resetGrid();
-		grid.addBlockAt(redBlock, topLeft);
+		grid.addBlockAt(NewBlock.RED, topLeft);
 		String expected = grid.toString();
 		assertTrue(actual.equals(expected));
 	}
 
 	@Test
 	public void testOneREDBlockShiftRightThenLeft() {
-		grid.addBlockAt(redBlock, topLeft);
+		grid.addBlockAt(NewBlock.RED, topLeft);
 		grid = shifter.shiftRight(grid);
 		grid = shifter.shiftLeft(grid);
 		String actual = grid.toString();
 		resetGrid();
-		grid.addBlockAt(redBlock, topLeft);
+		grid.addBlockAt(NewBlock.RED, topLeft);
 		String expected = grid.toString();
 		assertTrue(actual.equals(expected));
 	}
@@ -76,7 +74,7 @@ public class GridShifterTests {
 
 	private void fillGridToBottomStartingAt(Position currentPosition) {
 		while (currentPosition.getY() <= Grid.BOTTOM_Y) {
-			grid.addBlockAt(redBlock, currentPosition);
+			grid.addBlockAt(NewBlock.RED, currentPosition);
 			currentPosition.moveDown();
 		}
 	}

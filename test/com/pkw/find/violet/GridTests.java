@@ -1,6 +1,5 @@
 package com.pkw.find.violet;
 
-import static com.pkw.find.violet.Color.RED;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
@@ -9,7 +8,6 @@ import org.junit.Test;
 public class GridTests {
 
 	private Grid grid;
-	private final Block redBlock = new Block(RED);
 	private final Position topLeft = new Position(0, 0);
 	private final Position topRight = new Position(3, 0);
 
@@ -20,17 +18,17 @@ public class GridTests {
 
 	@Test
 	public void testAddREDBlockAtTopLeftPoint() {
-		grid.addBlockAt(redBlock, topLeft);
-		Block actual = grid.getBlockAt(topLeft);
-		Block expected = redBlock;
+		grid.addBlockAt(NewBlock.RED, topLeft);
+		NewBlock actual = grid.getBlockAt(topLeft);
+		NewBlock expected = NewBlock.RED;
 		assertTrue(actual.equals(expected));
 	}
 
 	@Test
 	public void testAddREDBlockAtTopRightPoint() {
-		grid.addBlockAt(redBlock, topRight);
-		Block actual = grid.getBlockAt(topRight);
-		Block expected = redBlock;
+		grid.addBlockAt(NewBlock.RED, topRight);
+		NewBlock actual = grid.getBlockAt(topRight);
+		NewBlock expected = NewBlock.RED;
 		assertTrue(actual.equals(expected));
 	}
 }
