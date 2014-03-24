@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 public class NewBlockTests {
 
 	@Test
-	public void test() {
+	public void testREDgetNextIsREDORANGE() {
 		NewBlock actual = NewBlock.RED.getNext();
 		NewBlock expected = NewBlock.RED_ORANGE;
 		assertEquals(expected, actual);
