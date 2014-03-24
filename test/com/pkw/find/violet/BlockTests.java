@@ -3,7 +3,7 @@ package com.pkw.find.violet;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class NewBlockTests {
+public class BlockTests {
 
 	@Test
 	public void testREDgetNextIsREDORANGE() {
