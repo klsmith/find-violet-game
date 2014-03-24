@@ -13,7 +13,7 @@ public class GridShifter {
 		while (inputPosition.getY() <= Grid.BOTTOM_Y) {
 			while (inputPosition.getX() >= Grid.LEFT_X) {
 				if (inputGrid.hasBlockAt(inputPosition)) {
-					NewBlock block = inputGrid.getBlockAt(inputPosition);
+					Block block = inputGrid.getBlockAt(inputPosition);
 					outputGrid.addBlockAt(block, outputPosition);
 					outputPosition.moveLeft();
 				}
@@ -34,7 +34,7 @@ public class GridShifter {
 		while (inputPosition.getY() <= Grid.BOTTOM_Y) {
 			while (inputPosition.getX() <= Grid.RIGHT_X) {
 				if (inputGrid.hasBlockAt(inputPosition)) {
-					NewBlock block = inputGrid.getBlockAt(inputPosition);
+					Block block = inputGrid.getBlockAt(inputPosition);
 					outputGrid.addBlockAt(block, outputPosition);
 					outputPosition.moveRight();
 				}

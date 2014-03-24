@@ -29,34 +29,34 @@ public class GridShifterTests {
 
 	@Test
 	public void testOneREDBlockShiftRight() {
-		grid.addBlockAt(NewBlock.RED, topLeft);
+		grid.addBlockAt(Block.RED, topLeft);
 		grid = shifter.shiftRight(grid);
 		String actual = grid.toString();
 		resetGrid();
-		grid.addBlockAt(NewBlock.RED, topRight);
+		grid.addBlockAt(Block.RED, topRight);
 		String expected = grid.toString();
 		assertTrue(actual.equals(expected));
 	}
 
 	@Test
 	public void testOneREDBlockShiftLeft() {
-		grid.addBlockAt(NewBlock.RED, topRight);
+		grid.addBlockAt(Block.RED, topRight);
 		grid = shifter.shiftLeft(grid);
 		String actual = grid.toString();
 		resetGrid();
-		grid.addBlockAt(NewBlock.RED, topLeft);
+		grid.addBlockAt(Block.RED, topLeft);
 		String expected = grid.toString();
 		assertTrue(actual.equals(expected));
 	}
 
 	@Test
 	public void testOneREDBlockShiftRightThenLeft() {
-		grid.addBlockAt(NewBlock.RED, topLeft);
+		grid.addBlockAt(Block.RED, topLeft);
 		grid = shifter.shiftRight(grid);
 		grid = shifter.shiftLeft(grid);
 		String actual = grid.toString();
 		resetGrid();
-		grid.addBlockAt(NewBlock.RED, topLeft);
+		grid.addBlockAt(Block.RED, topLeft);
 		String expected = grid.toString();
 		assertTrue(actual.equals(expected));
 	}
@@ -74,7 +74,7 @@ public class GridShifterTests {
 
 	private void fillGridToBottomStartingAt(Position currentPosition) {
 		while (currentPosition.getY() <= Grid.BOTTOM_Y) {
-			grid.addBlockAt(NewBlock.RED, currentPosition);
+			grid.addBlockAt(Block.RED, currentPosition);
 			currentPosition.moveDown();
 		}
 	}

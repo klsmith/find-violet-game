@@ -7,19 +7,19 @@ public class Grid {
 	public static final int TOP_Y = 0;
 	public static final int RIGHT_X = 3;
 	public static final int BOTTOM_Y = 3;
-	public static final NewBlock empty = NewBlock.NONE;
+	public static final Block empty = Block.NONE;
 
-	private NewBlock[] array = {//
+	private Block[] array = {//
 	empty, empty, empty, empty,//
 			empty, empty, empty, empty,//
 			empty, empty, empty, empty,//
 			empty, empty, empty, empty };
 
-	public void addBlockAt(NewBlock block, Position position) {
+	public void addBlockAt(Block block, Position position) {
 		array[getCoordinateValueOf(position)] = block;
 	}
 
-	public NewBlock getBlockAt(Position position) {
+	public Block getBlockAt(Position position) {
 		return array[getCoordinateValueOf(position)];
 	}
 
@@ -39,7 +39,7 @@ public class Grid {
 		Position currentPosition = new Position(0, 0);
 		while (currentPosition.getY() <= BOTTOM_Y) {
 			while (currentPosition.getX() <= RIGHT_X) {
-				NewBlock block = getBlockAt(currentPosition);
+				Block block = getBlockAt(currentPosition);
 				newGrid.addBlockAt(block, currentPosition);
 				currentPosition.moveRight();
 			}
@@ -57,7 +57,7 @@ public class Grid {
 		while (tempPosition.getY() < SIZE) {
 			result += "|     |     |     |     |\n";
 			while (tempPosition.getX() < SIZE) {
-				NewBlock block = getBlockAt(tempPosition);
+				Block block = getBlockAt(tempPosition);
 				String abbreviation = block.getAbbreviation();
 				result += "| " + abbreviation + " ";
 				tempPosition.moveRight();
@@ -88,8 +88,8 @@ public class Grid {
 		Position currentPosition = new Position(0, 0);
 		while (currentPosition.getY() <= BOTTOM_Y) {
 			while (currentPosition.getX() <= RIGHT_X) {
-				NewBlock block = getBlockAt(currentPosition);
-				NewBlock otherBlock = otherGrid.getBlockAt(currentPosition);
+				Block block = getBlockAt(currentPosition);
+				Block otherBlock = otherGrid.getBlockAt(currentPosition);
 				if (!block.equals(otherBlock)) {
 					return false;
 				}

@@ -18,17 +18,17 @@ public class GridTests {
 
 	@Test
 	public void testAddREDBlockAtTopLeftPoint() {
-		grid.addBlockAt(NewBlock.RED, topLeft);
-		NewBlock actual = grid.getBlockAt(topLeft);
-		NewBlock expected = NewBlock.RED;
+		grid.addBlockAt(Block.RED, topLeft);
+		Block actual = grid.getBlockAt(topLeft);
+		Block expected = Block.RED;
 		assertTrue(actual.equals(expected));
 	}
 
 	@Test
 	public void testAddREDBlockAtTopRightPoint() {
-		grid.addBlockAt(NewBlock.RED, topRight);
-		NewBlock actual = grid.getBlockAt(topRight);
-		NewBlock expected = NewBlock.RED;
+		grid.addBlockAt(Block.RED, topRight);
+		Block actual = grid.getBlockAt(topRight);
+		Block expected = Block.RED;
 		assertTrue(actual.equals(expected));
 	}
 }

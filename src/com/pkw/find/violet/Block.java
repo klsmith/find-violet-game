@@ -1,6 +1,6 @@
 package com.pkw.find.violet;
 
-public enum NewBlock {
+public enum Block {
 	NONE("   "), //
 	RED("RED"), //
 	RED_ORANGE("ROR"), //
@@ -16,7 +16,7 @@ public enum NewBlock {
 
 	private String abbreviation;
 
-	private NewBlock(String abbreviation) {
+	private Block(String abbreviation) {
 		this.abbreviation = abbreviation;
 	}
 
@@ -24,7 +24,7 @@ public enum NewBlock {
 		return abbreviation;
 	}
 
-	public NewBlock getNext() {
+	public Block getNext() {
 		return values()[(ordinal() + 1) % values().length];
 	}
 }
