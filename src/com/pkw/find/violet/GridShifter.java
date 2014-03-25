@@ -88,4 +88,24 @@ public class GridShifter {
 	private boolean isNotAtTop() {
 		return currentPosition.getY() >= Grid.TOP_Y;
 	}
+	
+	public Grid shiftUp(Grid grid) {
+		outputGrid = new Grid();
+		currentPosition = new Position(Grid.RIGHT_X, Grid.TOP_Y);
+		outputPosition = currentPosition.clone();
+		while (isNotAtLeft()) {
+			while (isNotAtBottom()) {
+				if (grid.hasBlockAt(currentPosition)) {
+					Block block = grid.getBlockAt(currentPosition);
+					copyBlockToOutputGrid(block);
+					outputPosition.moveDown();
+				}
+				currentPosition.moveDown();
+			}
+			currentPosition.setY(Grid.TOP_Y);
+			currentPosition.moveLeft();
+			outputPosition = currentPosition.clone();
+		}
+		return outputGrid;
+	}
 }

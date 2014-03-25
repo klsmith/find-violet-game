@@ -121,4 +121,27 @@ public class GridShifterTests {
 			position.moveRight();
 		}
 	}
+
+	@Test
+	public void testRedBlockShiftUp() {
+		grid.addBlockAt(Block.RED, bottomLeft);
+		grid = shifter.shiftUp(grid);
+		Grid actual = grid.clone();
+		resetGrid();
+		grid.addBlockAt(Block.RED, topLeft);
+		Grid expected = grid.clone();
+		assertTrue(actual.equals(expected));
+	}
+
+	@Test
+	public void testRedBlockShiftUpMulipleLines() {
+		fillGridToRightStartingAt(bottomLeft);
+		grid = shifter.shiftUp(grid);
+		Grid actual = grid.clone();
+		resetGrid();
+		fillGridToRightStartingAt(topLeft);
+		grid = shifter.shiftUp(grid);
+		Grid expected = grid.clone();
+		assertTrue(actual.equals(expected));
+	}
 }
