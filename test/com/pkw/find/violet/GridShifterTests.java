@@ -19,7 +19,7 @@ public class GridShifterTests {
 	}
 
 	private void resetGrid() {
-		grid = new Grid();
+		grid = Grid.create();
 	}
 
 	// private void printGrids(String actual, String expected) {

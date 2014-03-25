@@ -11,32 +11,32 @@ public class GridEqualityTests {
 
 	@Test
 	public void testGridDoesNotEqualNull() {
-		Grid actual = new Grid();
+		Grid actual = Grid.create();
 		Grid notExpected = null;
 		assertFalse(actual.equals(notExpected));
 	}
 
 	@Test
 	public void testGridEqualsSelf() {
-		Grid actual = new Grid();
+		Grid actual = Grid.create();
 		Grid expected = actual;
 		assertTrue(actual.equals(expected));
 	}
 
 	@Test
 	public void testGridsHaveBlocksAtSameLocation() {
-		Grid actual = new Grid();
+		Grid actual = Grid.create();
 		actual.addBlockAt(Block.RED, topLeft);
-		Grid expected = new Grid();
+		Grid expected = Grid.create();
 		expected.addBlockAt(Block.RED, topLeft);
 		assertTrue(actual.equals(expected));
 	}
 
 	@Test
 	public void testGridsHaveBlocksNotSameLocation() {
-		Grid actual = new Grid();
+		Grid actual = Grid.create();
 		actual.addBlockAt(Block.RED, topLeft);
-		Grid notExpected = new Grid();
+		Grid notExpected = Grid.create();
 		notExpected.addBlockAt(Block.RED, new Position(3, 0));
 		assertFalse(actual.equals(notExpected));
 	}

@@ -4,7 +4,7 @@ public abstract class GridShifter {
 
 	private static Position currentPosition = new Position(0, 0);
 	private static Position outputPosition = new Position(0, 0);
-	private static Grid outputGrid = new Grid();
+	private static Grid outputGrid = Grid.create();
 
 	public static Grid shiftRight(Grid grid) {
 		resetOutputGrid();
@@ -27,7 +27,7 @@ public abstract class GridShifter {
 	}
 
 	private static void resetOutputGrid() {
-		outputGrid = new Grid();
+		outputGrid = Grid.create();
 	}
 
 	private static boolean isNotAtBottom() {
@@ -43,7 +43,7 @@ public abstract class GridShifter {
 	}
 
 	public static Grid shiftLeft(Grid grid) {
-		outputGrid = new Grid();
+		outputGrid = Grid.create();
 		currentPosition = new Position(Grid.LEFT_X, Grid.TOP_Y);
 		outputPosition = currentPosition.clone();
 		while (isNotAtBottom()) {
@@ -67,7 +67,7 @@ public abstract class GridShifter {
 	}
 
 	public static Grid shiftDown(Grid grid) {
-		outputGrid = new Grid();
+		outputGrid = Grid.create();
 		currentPosition = new Position(Grid.RIGHT_X, Grid.BOTTOM_Y);
 		outputPosition = currentPosition.clone();
 		while (isNotAtLeft()) {
@@ -91,7 +91,7 @@ public abstract class GridShifter {
 	}
 
 	public static Grid shiftUp(Grid grid) {
-		outputGrid = new Grid();
+		outputGrid = Grid.create();
 		currentPosition = new Position(Grid.RIGHT_X, Grid.TOP_Y);
 		outputPosition = currentPosition.clone();
 		while (isNotAtLeft()) {

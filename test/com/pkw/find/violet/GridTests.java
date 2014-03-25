@@ -13,7 +13,7 @@ public class GridTests {
 
 	@Before
 	public void setup() {
-		grid = new Grid();
+		grid = Grid.create();
 	}
 
 	@Test

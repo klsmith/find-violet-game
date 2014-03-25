@@ -15,6 +15,14 @@ public class Grid {
 			EMPTY, EMPTY, EMPTY, EMPTY,//
 			EMPTY, EMPTY, EMPTY, EMPTY };
 
+	private Grid() {
+
+	}
+
+	public static Grid create() {
+		return new Grid();
+	}
+
 	public void addBlockAt(Block block, Position position) {
 		array[getCoordinateValueOf(position)] = block;
 	}
