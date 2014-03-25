@@ -1,12 +1,12 @@
 package com.pkw.find.violet;
 
-public class GridShifter {
+public abstract class GridShifter {
 
-	private Position currentPosition = new Position(0, 0);
-	private Position outputPosition = new Position(0, 0);
-	private Grid outputGrid = new Grid();
+	private static Position currentPosition = new Position(0, 0);
+	private static Position outputPosition = new Position(0, 0);
+	private static Grid outputGrid = new Grid();
 
-	public Grid shiftRight(Grid grid) {
+	public static Grid shiftRight(Grid grid) {
 		resetOutputGrid();
 		currentPosition = new Position(Grid.RIGHT_X, Grid.TOP_Y);
 		outputPosition = currentPosition.clone();
@@ -22,26 +22,27 @@ public class GridShifter {
 			currentPosition.setX(Grid.RIGHT_X);
 			currentPosition.moveDown();
 			outputPosition = currentPosition.clone();
-		}		return outputGrid;
+		}
+		return outputGrid;
 	}
 
-	private void resetOutputGrid() {
+	private static void resetOutputGrid() {
 		outputGrid = new Grid();
 	}
 
-	private boolean isNotAtBottom() {
+	private static boolean isNotAtBottom() {
 		return currentPosition.getY() <= Grid.BOTTOM_Y;
 	}
 
-	private boolean isNotAtLeft() {
+	private static boolean isNotAtLeft() {
 		return currentPosition.getX() >= Grid.LEFT_X;
 	}
 
-	private void copyBlockToOutputGrid(Block block) {
+	private static void copyBlockToOutputGrid(Block block) {
 		outputGrid.addBlockAt(block, outputPosition);
 	}
 
-	public Grid shiftLeft(Grid grid) {
+	public static Grid shiftLeft(Grid grid) {
 		outputGrid = new Grid();
 		currentPosition = new Position(Grid.LEFT_X, Grid.TOP_Y);
 		outputPosition = currentPosition.clone();
@@ -61,11 +62,11 @@ public class GridShifter {
 		return outputGrid;
 	}
 
-	private boolean isNotAtRight() {
+	private static boolean isNotAtRight() {
 		return currentPosition.getX() <= Grid.RIGHT_X;
 	}
 
-	public Grid shiftDown(Grid grid) {
+	public static Grid shiftDown(Grid grid) {
 		outputGrid = new Grid();
 		currentPosition = new Position(Grid.RIGHT_X, Grid.BOTTOM_Y);
 		outputPosition = currentPosition.clone();
@@ -85,11 +86,11 @@ public class GridShifter {
 		return outputGrid;
 	}
 
-	private boolean isNotAtTop() {
+	private static boolean isNotAtTop() {
 		return currentPosition.getY() >= Grid.TOP_Y;
 	}
-	
-	public Grid shiftUp(Grid grid) {
+
+	public static Grid shiftUp(Grid grid) {
 		outputGrid = new Grid();
 		currentPosition = new Position(Grid.RIGHT_X, Grid.TOP_Y);
 		outputPosition = currentPosition.clone();
