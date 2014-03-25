@@ -11,6 +11,8 @@ public class GridShifterTests {
 	private GridShifter shifter;
 	private final Position topLeft = new Position(0, 0);
 	private final Position topRight = new Position(3, 0);
+	private final Position bottomRight = new Position(3, 3);
+	private final Position bottomLeft = new Position(0, 3);
 
 	@Before
 	public void setup() {
@@ -88,5 +90,35 @@ public class GridShifterTests {
 		fillGridToBottomStartingAt(topLeft);
 		Grid expected = grid.clone();
 		assertTrue(actual.equals(expected));
+	}
+
+	@Test
+	public void testREDBlockShiftDown() {
+		grid.addBlockAt(Block.RED, topRight);
+		grid = shifter.shiftDown(grid);
+		Grid actual = grid.clone();
+		resetGrid();
+		grid.addBlockAt(Block.RED, bottomRight);
+		Grid expected = grid.clone();
+		assertTrue(actual.equals(expected));
+	}
+
+	@Test
+	public void testRedBlockShiftDownMultipleLines() {
+		fillGridToRightStartingAt(topLeft);
+		grid = shifter.shiftDown(grid);
+		Grid actual = grid.clone();
+		resetGrid();
+		fillGridToRightStartingAt(bottomLeft);
+		grid = shifter.shiftDown(grid);
+		Grid expected = grid.clone();
+		assertTrue(actual.equals(expected));
+	}
+
+	private void fillGridToRightStartingAt(Position position) {
+		while (position.getX() <= Grid.RIGHT_X) {
+			grid.addBlockAt(Block.RED, position);
+			position.moveRight();
+		}
 	}
 }
