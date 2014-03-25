@@ -7,7 +7,7 @@ import org.junit.Test;
 
 public class GridEqualityTests {
 
-	private Position topLeft = new Position(0, 0);
+	private Position topLeft = Position.createAt(0, 0);
 
 	@Test
 	public void testGridDoesNotEqualNull() {
@@ -37,7 +37,7 @@ public class GridEqualityTests {
 		Grid actual = Grid.create();
 		actual.addBlockAt(Block.RED, topLeft);
 		Grid notExpected = Grid.create();
-		notExpected.addBlockAt(Block.RED, new Position(3, 0));
+		notExpected.addBlockAt(Block.RED, Position.createAt(3, 0));
 		assertFalse(actual.equals(notExpected));
 	}
 }

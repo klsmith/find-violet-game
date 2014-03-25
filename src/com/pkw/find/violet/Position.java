@@ -4,9 +4,13 @@ public class Position {
 
 	int x, y;
 
-	public Position(int x, int y) {
+	private Position(int x, int y) {
 		this.x = x;
 		this.y = y;
+	}
+
+	public static Position createAt(int x, int y) {
+		return new Position(x, y);
 	}
 
 	public void setX(int x) {

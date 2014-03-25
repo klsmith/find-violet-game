@@ -8,10 +8,10 @@ import org.junit.Test;
 public class GridShifterTests {
 
 	private Grid grid;
-	private final Position topLeft = new Position(0, 0);
-	private final Position topRight = new Position(3, 0);
-	private final Position bottomRight = new Position(3, 3);
-	private final Position bottomLeft = new Position(0, 3);
+	private final Position topLeft = Position.createAt(0, 0);
+	private final Position topRight = Position.createAt(3, 0);
+	private final Position bottomRight = Position.createAt(3, 3);
+	private final Position bottomLeft = Position.createAt(0, 3);
 
 	@Before
 	public void setup() {

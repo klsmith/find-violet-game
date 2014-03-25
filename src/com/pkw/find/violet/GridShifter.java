@@ -2,13 +2,13 @@ package com.pkw.find.violet;
 
 public abstract class GridShifter {
 
-	private static Position currentPosition = new Position(0, 0);
-	private static Position outputPosition = new Position(0, 0);
+	private static Position currentPosition = Position.createAt(0, 0);
+	private static Position outputPosition = Position.createAt(0, 0);
 	private static Grid outputGrid = Grid.create();
 
 	public static Grid shiftRight(Grid grid) {
 		resetOutputGrid();
-		currentPosition = new Position(Grid.RIGHT_X, Grid.TOP_Y);
+		currentPosition = Position.createAt(Grid.RIGHT_X, Grid.TOP_Y);
 		outputPosition = currentPosition.clone();
 		while (isNotAtBottom()) {
 			while (isNotAtLeft()) {
@@ -44,7 +44,7 @@ public abstract class GridShifter {
 
 	public static Grid shiftLeft(Grid grid) {
 		outputGrid = Grid.create();
-		currentPosition = new Position(Grid.LEFT_X, Grid.TOP_Y);
+		currentPosition = Position.createAt(Grid.LEFT_X, Grid.TOP_Y);
 		outputPosition = currentPosition.clone();
 		while (isNotAtBottom()) {
 			while (isNotAtRight()) {
@@ -68,7 +68,7 @@ public abstract class GridShifter {
 
 	public static Grid shiftDown(Grid grid) {
 		outputGrid = Grid.create();
-		currentPosition = new Position(Grid.RIGHT_X, Grid.BOTTOM_Y);
+		currentPosition = Position.createAt(Grid.RIGHT_X, Grid.BOTTOM_Y);
 		outputPosition = currentPosition.clone();
 		while (isNotAtLeft()) {
 			while (isNotAtTop()) {
@@ -92,7 +92,7 @@ public abstract class GridShifter {
 
 	public static Grid shiftUp(Grid grid) {
 		outputGrid = Grid.create();
-		currentPosition = new Position(Grid.RIGHT_X, Grid.TOP_Y);
+		currentPosition = Position.createAt(Grid.RIGHT_X, Grid.TOP_Y);
 		outputPosition = currentPosition.clone();
 		while (isNotAtLeft()) {
 			while (isNotAtBottom()) {

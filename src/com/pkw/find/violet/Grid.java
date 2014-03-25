@@ -44,7 +44,7 @@ public class Grid {
 	@Override
 	public Grid clone() {
 		Grid newGrid = new Grid();
-		Position currentPosition = new Position(0, 0);
+		Position currentPosition = Position.createAt(0, 0);
 		while (currentPosition.getY() <= BOTTOM_Y) {
 			while (currentPosition.getX() <= RIGHT_X) {
 				Block block = getBlockAt(currentPosition);
@@ -61,7 +61,7 @@ public class Grid {
 	public String toString() {
 		String result = " _______________________\n";
 
-		Position tempPosition = new Position(0, 0);
+		Position tempPosition = Position.createAt(0, 0);
 		while (tempPosition.getY() < SIZE) {
 			result += "|     |     |     |     |\n";
 			while (tempPosition.getX() < SIZE) {
@@ -93,7 +93,7 @@ public class Grid {
 	}
 
 	public boolean hasSameBlockPositionsAs(Grid otherGrid) {
-		Position currentPosition = new Position(0, 0);
+		Position currentPosition = Position.createAt(0, 0);
 		while (currentPosition.getY() <= BOTTOM_Y) {
 			while (currentPosition.getX() <= RIGHT_X) {
 				Block block = getBlockAt(currentPosition);

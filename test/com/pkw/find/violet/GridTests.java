@@ -8,8 +8,8 @@ import org.junit.Test;
 public class GridTests {
 
 	private Grid grid;
-	private final Position topLeft = new Position(0, 0);
-	private final Position topRight = new Position(3, 0);
+	private final Position topLeft = Position.createAt(0, 0);
+	private final Position topRight = Position.createAt(3, 0);
 
 	@Before
 	public void setup() {
