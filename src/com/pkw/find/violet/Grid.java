@@ -7,13 +7,13 @@ public class Grid {
 	public static final int TOP_Y = 0;
 	public static final int RIGHT_X = 3;
 	public static final int BOTTOM_Y = 3;
-	public static final Block empty = Block.NONE;
+	public static final Block EMPTY = Block.NONE;
 
 	private Block[] array = {//
-	empty, empty, empty, empty,//
-			empty, empty, empty, empty,//
-			empty, empty, empty, empty,//
-			empty, empty, empty, empty };
+	EMPTY, EMPTY, EMPTY, EMPTY,//
+			EMPTY, EMPTY, EMPTY, EMPTY,//
+			EMPTY, EMPTY, EMPTY, EMPTY,//
+			EMPTY, EMPTY, EMPTY, EMPTY };
 
 	public void addBlockAt(Block block, Position position) {
 		array[getCoordinateValueOf(position)] = block;
@@ -30,7 +30,7 @@ public class Grid {
 	}
 
 	public boolean hasBlockAt(Position position) {
-		return !getBlockAt(position).equals(empty);
+		return !getBlockAt(position).equals(EMPTY);
 	}
 
 	@Override
