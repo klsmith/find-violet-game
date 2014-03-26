@@ -22,7 +22,7 @@ public class GridShifterTests {
 		grid = Grid.create();
 	}
 
-	// private void printGrids(String actual, String expected) {
+	// private void printGrids(Grid actual, Grid expected) {
 	// System.out.println("\nActual:\n" + actual + "\nExpected:\n" + expected
 	// + "\n");
 	// }
