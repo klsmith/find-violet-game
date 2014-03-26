@@ -2,32 +2,25 @@ package com.pkw.find.violet;
 
 public abstract class GridShifter {
 
-	private static Position currentPosition = Position.createAt(0, 0);
-	private static Position outputPosition = Position.createAt(0, 0);
-	private static Grid outputGrid = Grid.create();
+	private static Position currentPosition;
+	private static Position newPosition;
+	private static Grid thisGrid;
 
-	public static Grid shiftRight(Grid grid) {
-		resetOutputGrid();
+	public static void shiftRight(Grid grid) {
+		GridShifter.thisGrid = grid;
 		currentPosition = Position.createAt(Grid.RIGHT_X, Grid.TOP_Y);
-		outputPosition = currentPosition.clone();
 		while (isNotAtBottom()) {
+			newPosition = currentPosition.clone();
 			while (isNotAtLeft()) {
-				if (grid.hasBlockAt(currentPosition)) {
-					Block block = grid.getBlockAt(currentPosition);
-					copyBlockToOutputGrid(block);
-					outputPosition.moveLeft();
+				if (thisGrid.hasBlockAt(currentPosition)) {
+					moveBlockToNewPosition();
+					newPosition.moveLeft();
 				}
 				currentPosition.moveLeft();
 			}
 			currentPosition.setX(Grid.RIGHT_X);
 			currentPosition.moveDown();
-			outputPosition = currentPosition.clone();
 		}
-		return outputGrid;
-	}
-
-	private static void resetOutputGrid() {
-		outputGrid = Grid.create();
 	}
 
 	private static boolean isNotAtBottom() {
@@ -38,75 +31,69 @@ public abstract class GridShifter {
 		return currentPosition.getX() >= Grid.LEFT_X;
 	}
 
-	private static void copyBlockToOutputGrid(Block block) {
-		outputGrid.addBlockAt(block, outputPosition);
+	private static void moveBlockToNewPosition() {
+		Block block = thisGrid.getBlockAt(currentPosition);
+		thisGrid.removeBlockAt(currentPosition);
+		thisGrid.addBlockAt(block, newPosition);
 	}
 
-	public static Grid shiftLeft(Grid grid) {
-		outputGrid = Grid.create();
+	public static void shiftLeft(Grid grid) {
+		GridShifter.thisGrid = grid;
 		currentPosition = Position.createAt(Grid.LEFT_X, Grid.TOP_Y);
-		outputPosition = currentPosition.clone();
 		while (isNotAtBottom()) {
+			newPosition = currentPosition.clone();
 			while (isNotAtRight()) {
-				if (grid.hasBlockAt(currentPosition)) {
-					Block block = grid.getBlockAt(currentPosition);
-					copyBlockToOutputGrid(block);
-					outputPosition.moveRight();
+				if (thisGrid.hasBlockAt(currentPosition)) {
+					moveBlockToNewPosition();
+					newPosition.moveRight();
 				}
 				currentPosition.moveRight();
 			}
 			currentPosition.setX(Grid.LEFT_X);
 			currentPosition.moveDown();
-			outputPosition = currentPosition.clone();
+
 		}
-		return outputGrid;
 	}
 
 	private static boolean isNotAtRight() {
 		return currentPosition.getX() <= Grid.RIGHT_X;
 	}
 
-	public static Grid shiftDown(Grid grid) {
-		outputGrid = Grid.create();
+	public static void shiftDown(Grid grid) {
+		GridShifter.thisGrid = grid;
 		currentPosition = Position.createAt(Grid.RIGHT_X, Grid.BOTTOM_Y);
-		outputPosition = currentPosition.clone();
 		while (isNotAtLeft()) {
+			newPosition = currentPosition.clone();
 			while (isNotAtTop()) {
-				if (grid.hasBlockAt(currentPosition)) {
-					Block block = grid.getBlockAt(currentPosition);
-					copyBlockToOutputGrid(block);
-					outputPosition.moveUp();
+				if (thisGrid.hasBlockAt(currentPosition)) {
+					moveBlockToNewPosition();
+					newPosition.moveUp();
 				}
 				currentPosition.moveUp();
 			}
 			currentPosition.setY(Grid.BOTTOM_Y);
 			currentPosition.moveLeft();
-			outputPosition = currentPosition.clone();
 		}
-		return outputGrid;
 	}
 
 	private static boolean isNotAtTop() {
 		return currentPosition.getY() >= Grid.TOP_Y;
 	}
 
-	public static Grid shiftUp(Grid grid) {
-		outputGrid = Grid.create();
+	public static void shiftUp(Grid grid) {
+		GridShifter.thisGrid = grid;
 		currentPosition = Position.createAt(Grid.RIGHT_X, Grid.TOP_Y);
-		outputPosition = currentPosition.clone();
 		while (isNotAtLeft()) {
+			newPosition = currentPosition.clone();
 			while (isNotAtBottom()) {
-				if (grid.hasBlockAt(currentPosition)) {
-					Block block = grid.getBlockAt(currentPosition);
-					copyBlockToOutputGrid(block);
-					outputPosition.moveDown();
+				if (thisGrid.hasBlockAt(currentPosition)) {
+					moveBlockToNewPosition();
+					newPosition.moveDown();
 				}
 				currentPosition.moveDown();
 			}
 			currentPosition.setY(Grid.TOP_Y);
 			currentPosition.moveLeft();
-			outputPosition = currentPosition.clone();
 		}
-		return outputGrid;
 	}
 }
