@@ -44,6 +44,7 @@ public class GridTests {
 	@Test
 	public void testDown() {
 		Grid actual = createSampleGrid();
+		actual.down();
 		Grid expected = Grid.create();
 		expected.addBlockAt(Block.RED_ORANGE, Position.createAt(0, 1));
 		expected.addBlockAt(Block.GREEN, Position.createAt(1, 1));
@@ -54,9 +55,6 @@ public class GridTests {
 		expected.addBlockAt(Block.ORANGE, Position.createAt(1, 3));
 		expected.addBlockAt(Block.RED, Position.createAt(2, 3));
 		expected.addBlockAt(Block.ORANGE, Position.createAt(3, 3));
-		printGrids(actual, expected);
-		actual.down();
-		printGrids(actual, expected);
 		assertTrue(actual.equals(expected));
 	}
 
@@ -76,5 +74,23 @@ public class GridTests {
 		Grid clone = grid.clone();
 		resetGrid();
 		return clone;
+	}
+
+	@Test
+	public void testUp() {
+		Grid actual = createSampleGrid();
+		actual.up();
+		Grid expected = Grid.create();
+		expected.addBlockAt(Block.RED_ORANGE, Position.createAt(0, 0));
+		expected.addBlockAt(Block.GREEN, Position.createAt(1, 0));
+		expected.addBlockAt(Block.YELLOW, Position.createAt(2, 0));
+		expected.addBlockAt(Block.ORANGE, Position.createAt(3, 0));
+		expected.addBlockAt(Block.YELLOW, Position.createAt(0, 1));
+		expected.addBlockAt(Block.YELLOW_GREEN, Position.createAt(1, 1));
+		expected.addBlockAt(Block.RED, Position.createAt(2, 1));
+		expected.addBlockAt(Block.RED_ORANGE, Position.createAt(0, 2));
+		expected.addBlockAt(Block.ORANGE, Position.createAt(1, 2));
+		printGrids(actual, expected);
+		assertTrue(actual.equals(expected));
 	}
 }

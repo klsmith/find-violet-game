@@ -108,13 +108,13 @@ public abstract class GridCombiner {
 
 	public static void combineToTop(Grid grid) {
 		thisGrid = grid;
-		startAtBottomLeft();
+		startAtTopLeft();
 		while (isNotAtRight(currentPosition)) {
-			while (isNotAtTop(currentPosition)) {
+			while (isNotAtBottom(currentPosition)) {
 				if (thisGrid.hasBlockAt(currentPosition)) {
 					combineNextSimilarBlockFromBottom();
 				}
-				currentPosition.moveUp();
+				currentPosition.moveDown();
 			}
 			resetToTop();
 			currentPosition.moveRight();
