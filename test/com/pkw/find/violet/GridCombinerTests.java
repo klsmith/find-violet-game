@@ -27,7 +27,6 @@ public class GridCombinerTests {
 		GridCombiner.combineToRight(actual);
 		Grid expected = Grid.create();
 		fillRightColumToBottom(expected);
-		printGrids(actual, expected);
 		assertTrue(actual.equals(expected));
 	}
 

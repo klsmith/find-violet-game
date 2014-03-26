@@ -8,7 +8,7 @@ public class GridCombiner {
 
 	public static void combineToRight(Grid grid) {
 		thisGrid = grid;
-		currentPosition = Position.createAt(Grid.RIGHT_X, Grid.TOP_Y);
+		startAtTopRight();
 		while (isNotAtBottom(currentPosition)) {
 			while (isNotAtLeft(currentPosition)) {
 				if (thisGrid.hasBlockAt(currentPosition)) {
@@ -16,9 +16,13 @@ public class GridCombiner {
 				}
 				currentPosition.moveLeft();
 			}
-			currentPosition.setX(Grid.RIGHT_X);
+			resetToRight();
 			currentPosition.moveDown();
 		}
+	}
+
+	private static void startAtTopRight() {
+		currentPosition = Position.createAt(Grid.RIGHT_X, Grid.TOP_Y);
 	}
 
 	private static boolean isNotAtBottom(Position position) {
@@ -27,6 +31,10 @@ public class GridCombiner {
 
 	private static boolean isNotAtLeft(Position position) {
 		return position.getX() >= Grid.LEFT_X;
+	}
+
+	private static void resetToRight() {
+		currentPosition.setX(Grid.RIGHT_X);
 	}
 
 	private static void combineNextSimilarBlockFromRight() {
