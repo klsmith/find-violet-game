@@ -108,4 +108,8 @@ public class Grid {
 		}
 		return true;
 	}
+
+	public void removeBlockAt(Position position) {
+		addBlockAt(EMPTY, position);
+	}
 }
