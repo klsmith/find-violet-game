@@ -74,10 +74,13 @@ public abstract class GridCombiner {
 				}
 				currentPosition.moveRight();
 			}
-			resetToRight();
+			resetToLeft();
 			currentPosition.moveDown();
 		}
+	}
 
+	private static void resetToLeft() {
+		currentPosition.setX(Grid.LEFT_X);
 	}
 
 	private static void startAtTopLeft() {
@@ -101,5 +104,81 @@ public abstract class GridCombiner {
 			}
 			scanPosition.moveRight();
 		}
+	}
+
+	public static void combineToTop(Grid grid) {
+		thisGrid = grid;
+		startAtBottomLeft();
+		while (isNotAtRight(currentPosition)) {
+			while (isNotAtTop(currentPosition)) {
+				if (thisGrid.hasBlockAt(currentPosition)) {
+					combineNextSimilarBlockFromBottom();
+				}
+				currentPosition.moveUp();
+			}
+			resetToBottom();
+			currentPosition.moveRight();
+		}
+	}
+
+	private static void startAtBottomLeft() {
+		currentPosition = Position.createAt(Grid.LEFT_X, Grid.BOTTOM_Y);
+	}
+
+	private static boolean isNotAtTop(Position position) {
+		return position.getY() >= Grid.TOP_Y;
+	}
+
+	private static void combineNextSimilarBlockFromBottom() {
+		scanPosition = currentPosition.clone();
+		scanPosition.moveDown();
+		while (isNotAtBottom(scanPosition)) {
+			if (thisGrid.hasBlockAt(scanPosition)) {
+				if (foundBlockIsSimilar()) {
+					combine();
+				} else {
+					return;
+				}
+			}
+			scanPosition.moveDown();
+		}
+	}
+
+	private static void resetToBottom() {
+		currentPosition.setY(Grid.BOTTOM_Y);
+	}
+
+	public static void combineToBottom(Grid grid) {
+		thisGrid = grid;
+		startAtBottomLeft();
+		while (isNotAtRight(currentPosition)) {
+			while (isNotAtTop(currentPosition)) {
+				if (thisGrid.hasBlockAt(currentPosition)) {
+					combineNextSimilarBlockFromTop();
+				}
+				currentPosition.moveUp();
+			}
+			resetToTop();
+			currentPosition.moveRight();
+		}
+	}
+
+	private static void combineNextSimilarBlockFromTop() {
+		scanPosition = currentPosition.clone();
+		scanPosition.moveUp();
+		while (isNotAtTop(scanPosition)) {
+			if (thisGrid.hasBlockAt(scanPosition)) {
+				if (foundBlockIsSimilar()) {
+					combine();
+				} else {
+					return;
+				}
+			}
+			scanPosition.moveUp();
+		}
+	}
+
+	private static void resetToTop() {
+		currentPosition.setY(Grid.TOP_Y);
 	}
 }
