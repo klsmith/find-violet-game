@@ -116,7 +116,7 @@ public abstract class GridCombiner {
 				}
 				currentPosition.moveUp();
 			}
-			resetToBottom();
+			resetToTop();
 			currentPosition.moveRight();
 		}
 	}
@@ -144,8 +144,8 @@ public abstract class GridCombiner {
 		}
 	}
 
-	private static void resetToBottom() {
-		currentPosition.setY(Grid.BOTTOM_Y);
+	private static void resetToTop() {
+		currentPosition.setY(Grid.TOP_Y);
 	}
 
 	public static void combineToBottom(Grid grid) {
@@ -158,7 +158,7 @@ public abstract class GridCombiner {
 				}
 				currentPosition.moveUp();
 			}
-			resetToTop();
+			resetToBottom();
 			currentPosition.moveRight();
 		}
 	}
@@ -178,7 +178,8 @@ public abstract class GridCombiner {
 		}
 	}
 
-	private static void resetToTop() {
-		currentPosition.setY(Grid.TOP_Y);
+	private static void resetToBottom() {
+		currentPosition.setY(Grid.BOTTOM_Y);
 	}
+
 }

@@ -31,10 +31,10 @@ public class GridCombinerTests {
 		assertTrue(actual.equals(expected));
 	}
 
-	private void printGrids(Grid actual, Grid expected) {
-		System.out.println("\nActual:\n" + actual + "\nExpected:\n" + expected
-				+ "\n");
-	}
+	// private void printGrids(Grid actual, Grid expected) {
+	// System.out.println("\nActual:\n" + actual + "\nExpected:\n" + expected
+	// + "\n");
+	// }
 
 	private void fillTwoRightColumns(Grid grid) {
 		Position currentPosition = Position.createAt(Grid.RIGHT_X, Grid.TOP_Y);
@@ -142,7 +142,6 @@ public class GridCombinerTests {
 		Grid expected = Grid.create();
 		expected.addBlockAt(Block.RED_ORANGE,
 				Position.createAt(Grid.LEFT_X, Grid.BOTTOM_Y));
-		printGrids(actual, expected);
 		assertTrue(actual.equals(expected));
 	}
 }

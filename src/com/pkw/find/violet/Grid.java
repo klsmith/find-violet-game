@@ -112,4 +112,28 @@ public class Grid {
 	public void removeBlockAt(Position position) {
 		addBlockAt(EMPTY, position);
 	}
+
+	public void right() {
+		GridCombiner.combineToRight(this);
+		GridShifter.shiftToRight(this);
+
+	}
+
+	public void left() {
+		GridCombiner.combineToLeft(this);
+		GridShifter.shiftToLeft(this);
+
+	}
+
+	public void up() {
+		GridCombiner.combineToTop(this);
+		GridShifter.shiftToTop(this);
+
+	}
+
+	public void down() {
+		GridCombiner.combineToBottom(this);
+		GridShifter.shiftToBottom(this);
+
+	}
 }
