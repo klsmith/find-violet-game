@@ -33,23 +33,6 @@ public class Position {
 		return y;
 	}
 
-	// public void move(Direction direction) {
-	// switch (direction) {
-	// case RIGHT:
-	// moveRight();
-	// break;
-	// case UP:
-	// moveUp();
-	// break;
-	// case LEFT:
-	// moveLeft();
-	// break;
-	// case DOWN:
-	// moveDown();
-	// break;
-	// }
-	// }
-
 	public void moveRight() {
 		x++;
 	}
