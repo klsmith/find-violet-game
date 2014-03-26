@@ -7,7 +7,7 @@ import org.junit.Test;
 public class GridCombinerTests {
 
 	@Test
-	public void testTwoRedBlockCombineToOneRedOrangeBlock() {
+	public void testTwoRedBlockCombineToRightOneRedOrangeBlock() {
 		Grid actual = Grid.create();
 		actual.addBlockAt(Block.RED,
 				Position.createAt(Grid.RIGHT_X, Grid.TOP_Y));
@@ -21,12 +21,13 @@ public class GridCombinerTests {
 	}
 
 	@Test
-	public void testTwoRedBlockCombineOneRedOrangeBlockMultipleLines() {
+	public void testTwoRedBlockCombineToRightOneRedOrangeBlockMultipleLines() {
 		Grid actual = Grid.create();
 		fillTwoRightColumnsToBottom(actual);
 		GridCombiner.combineToRight(actual);
 		Grid expected = Grid.create();
-		fillRightColumToBottom(expected);
+		fillGridToBottomStartingAt(expected,
+				Position.createAt(Grid.RIGHT_X, Grid.TOP_Y));
 		assertTrue(actual.equals(expected));
 	}
 
@@ -47,11 +48,23 @@ public class GridCombinerTests {
 
 	}
 
-	private void fillRightColumToBottom(Grid grid) {
-		Position currentPosition = Position.createAt(Grid.RIGHT_X, Grid.TOP_Y);
+	private void fillGridToBottomStartingAt(Grid grid, Position currentPosition) {
 		while (currentPosition.getY() <= Grid.BOTTOM_Y) {
 			grid.addBlockAt(Block.RED_ORANGE, currentPosition);
 			currentPosition.moveDown();
 		}
+	}
+
+	@Test
+	public void testTwoRedBlockCombineToLeftOneRedOrangeBlock() {
+		Grid actual = Grid.create();
+		actual.addBlockAt(Block.RED, Position.createAt(Grid.LEFT_X, Grid.TOP_Y));
+		actual.addBlockAt(Block.RED,
+				Position.createAt(Grid.LEFT_X + 1, Grid.TOP_Y));
+		GridCombiner.combineToLeft(actual);
+		Grid expected = Grid.create();
+		expected.addBlockAt(Block.RED_ORANGE,
+				Position.createAt(Grid.LEFT_X, Grid.TOP_Y));
+		assertTrue(actual.equals(expected));
 	}
 }

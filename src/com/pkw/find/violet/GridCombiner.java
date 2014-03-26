@@ -12,7 +12,7 @@ public abstract class GridCombiner {
 		while (isNotAtBottom(currentPosition)) {
 			while (isNotAtLeft(currentPosition)) {
 				if (thisGrid.hasBlockAt(currentPosition)) {
-					combineNextSimilarBlockFromRight();
+					combineNextSimilarBlockFromLeft();
 				}
 				currentPosition.moveLeft();
 			}
@@ -37,7 +37,7 @@ public abstract class GridCombiner {
 		currentPosition.setX(Grid.RIGHT_X);
 	}
 
-	private static void combineNextSimilarBlockFromRight() {
+	private static void combineNextSimilarBlockFromLeft() {
 		scanPosition = currentPosition.clone();
 		scanPosition.moveLeft();
 		while (isNotAtLeft(scanPosition)) {
@@ -64,4 +64,42 @@ public abstract class GridCombiner {
 		thisGrid.addBlockAt(originalBlock.getNext(), currentPosition);
 	}
 
+	public static void combineToLeft(Grid grid) {
+		thisGrid = grid;
+		startAtTopLeft();
+		while (isNotAtBottom(currentPosition)) {
+			while (isNotAtRight(currentPosition)) {
+				if (thisGrid.hasBlockAt(currentPosition)) {
+					combineNextSimilarBlockFromRight();
+				}
+				currentPosition.moveRight();
+			}
+			resetToRight();
+			currentPosition.moveDown();
+		}
+
+	}
+
+	private static void startAtTopLeft() {
+		currentPosition = Position.createAt(Grid.LEFT_X, Grid.TOP_Y);
+	}
+
+	private static boolean isNotAtRight(Position position) {
+		return position.getX() <= Grid.RIGHT_X;
+	}
+
+	private static void combineNextSimilarBlockFromRight() {
+		scanPosition = currentPosition.clone();
+		scanPosition.moveRight();
+		while (isNotAtRight(scanPosition)) {
+			if (thisGrid.hasBlockAt(scanPosition)) {
+				if (foundBlockIsSimilar()) {
+					combine();
+				} else {
+					return;
+				}
+			}
+			scanPosition.moveRight();
+		}
+	}
 }
