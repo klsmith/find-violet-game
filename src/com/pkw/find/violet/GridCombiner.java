@@ -1,6 +1,6 @@
 package com.pkw.find.violet;
 
-public class GridCombiner {
+public abstract class GridCombiner {
 
 	private static Grid thisGrid;
 	private static Position currentPosition;
