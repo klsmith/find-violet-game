@@ -30,7 +30,7 @@ public class GridShifterTests {
 	@Test
 	public void testOneREDBlockShiftRight() {
 		grid.addBlockAt(Block.RED, topLeft);
-		GridShifter.shiftRight(grid);
+		GridShifter.shiftToRight(grid);
 		Grid actual = grid.clone();
 		resetGrid();
 		grid.addBlockAt(Block.RED, topRight);
@@ -41,7 +41,7 @@ public class GridShifterTests {
 	@Test
 	public void testOneREDBlockShiftLeft() {
 		grid.addBlockAt(Block.RED, topRight);
-		GridShifter.shiftLeft(grid);
+		GridShifter.shiftToLeft(grid);
 		Grid actual = grid.clone();
 		resetGrid();
 		grid.addBlockAt(Block.RED, topLeft);
@@ -52,8 +52,8 @@ public class GridShifterTests {
 	@Test
 	public void testOneREDBlockShiftRightThenLeft() {
 		grid.addBlockAt(Block.RED, topLeft);
-		GridShifter.shiftRight(grid);
-		GridShifter.shiftLeft(grid);
+		GridShifter.shiftToRight(grid);
+		GridShifter.shiftToLeft(grid);
 		Grid actual = grid.clone();
 		resetGrid();
 		grid.addBlockAt(Block.RED, topLeft);
@@ -64,7 +64,7 @@ public class GridShifterTests {
 	@Test
 	public void testRedBlockShiftRightMultipleLines() {
 		fillGridToBottomStartingAt(topLeft);
-		GridShifter.shiftRight(grid);
+		GridShifter.shiftToRight(grid);
 		Grid actual = grid.clone();
 		resetGrid();
 		fillGridToBottomStartingAt(topRight);
@@ -82,7 +82,7 @@ public class GridShifterTests {
 	@Test
 	public void testREDBlockShiftLeftMultipleLines() {
 		fillGridToBottomStartingAt(topRight);
-		GridShifter.shiftLeft(grid);
+		GridShifter.shiftToLeft(grid);
 		Grid actual = grid.clone();
 		resetGrid();
 		fillGridToBottomStartingAt(topLeft);
@@ -93,7 +93,7 @@ public class GridShifterTests {
 	@Test
 	public void testREDBlockShiftDown() {
 		grid.addBlockAt(Block.RED, topRight);
-		GridShifter.shiftDown(grid);
+		GridShifter.shiftToBottom(grid);
 		Grid actual = grid.clone();
 		resetGrid();
 		grid.addBlockAt(Block.RED, bottomRight);
@@ -104,11 +104,11 @@ public class GridShifterTests {
 	@Test
 	public void testRedBlockShiftDownMultipleLines() {
 		fillGridToRightStartingAt(topLeft);
-		GridShifter.shiftDown(grid);
+		GridShifter.shiftToBottom(grid);
 		Grid actual = grid.clone();
 		resetGrid();
 		fillGridToRightStartingAt(bottomLeft);
-		GridShifter.shiftDown(grid);
+		GridShifter.shiftToBottom(grid);
 		Grid expected = grid.clone();
 		assertTrue(actual.equals(expected));
 	}
@@ -123,7 +123,7 @@ public class GridShifterTests {
 	@Test
 	public void testRedBlockShiftUp() {
 		grid.addBlockAt(Block.RED, bottomLeft);
-		GridShifter.shiftUp(grid);
+		GridShifter.shiftToTop(grid);
 		Grid actual = grid.clone();
 		resetGrid();
 		grid.addBlockAt(Block.RED, topLeft);
@@ -134,11 +134,11 @@ public class GridShifterTests {
 	@Test
 	public void testRedBlockShiftUpMulipleLines() {
 		fillGridToRightStartingAt(bottomLeft);
-		GridShifter.shiftUp(grid);
+		GridShifter.shiftToTop(grid);
 		Grid actual = grid.clone();
 		resetGrid();
 		fillGridToRightStartingAt(topLeft);
-		GridShifter.shiftUp(grid);
+		GridShifter.shiftToTop(grid);
 		Grid expected = grid.clone();
 		assertTrue(actual.equals(expected));
 	}

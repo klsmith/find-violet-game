@@ -6,7 +6,7 @@ public abstract class GridShifter {
 	private static Position newPosition;
 	private static Grid thisGrid;
 
-	public static void shiftRight(Grid grid) {
+	public static void shiftToRight(Grid grid) {
 		GridShifter.thisGrid = grid;
 		currentPosition = Position.createAt(Grid.RIGHT_X, Grid.TOP_Y);
 		while (isNotAtBottom()) {
@@ -37,7 +37,7 @@ public abstract class GridShifter {
 		thisGrid.addBlockAt(block, newPosition);
 	}
 
-	public static void shiftLeft(Grid grid) {
+	public static void shiftToLeft(Grid grid) {
 		GridShifter.thisGrid = grid;
 		currentPosition = Position.createAt(Grid.LEFT_X, Grid.TOP_Y);
 		while (isNotAtBottom()) {
@@ -59,7 +59,7 @@ public abstract class GridShifter {
 		return currentPosition.getX() <= Grid.RIGHT_X;
 	}
 
-	public static void shiftDown(Grid grid) {
+	public static void shiftToBottom(Grid grid) {
 		GridShifter.thisGrid = grid;
 		currentPosition = Position.createAt(Grid.RIGHT_X, Grid.BOTTOM_Y);
 		while (isNotAtLeft()) {
@@ -80,7 +80,7 @@ public abstract class GridShifter {
 		return currentPosition.getY() >= Grid.TOP_Y;
 	}
 
-	public static void shiftUp(Grid grid) {
+	public static void shiftToTop(Grid grid) {
 		GridShifter.thisGrid = grid;
 		currentPosition = Position.createAt(Grid.RIGHT_X, Grid.TOP_Y);
 		while (isNotAtLeft()) {
