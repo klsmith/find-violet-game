@@ -46,31 +46,31 @@ public class GridTests {
 		Grid actual = createSampleGrid();
 		actual.down();
 		Grid expected = Grid.create();
-		expected.addBlockAt(Block.RED_ORANGE, Position.createAt(0, 1));
-		expected.addBlockAt(Block.GREEN, Position.createAt(1, 1));
-		expected.addBlockAt(Block.YELLOW, Position.createAt(0, 2));
-		expected.addBlockAt(Block.YELLOW_GREEN, Position.createAt(1, 2));
-		expected.addBlockAt(Block.YELLOW, Position.createAt(2, 2));
-		expected.addBlockAt(Block.RED_ORANGE, Position.createAt(0, 3));
-		expected.addBlockAt(Block.ORANGE, Position.createAt(1, 3));
-		expected.addBlockAt(Block.RED, Position.createAt(2, 3));
-		expected.addBlockAt(Block.ORANGE, Position.createAt(3, 3));
+		expected.addBlockAt(Block.RED_ORANGE, Position.createAt(0, 1))//
+				.addBlockAt(Block.GREEN, Position.createAt(1, 1))//
+				.addBlockAt(Block.YELLOW, Position.createAt(0, 2))//
+				.addBlockAt(Block.YELLOW_GREEN, Position.createAt(1, 2))//
+				.addBlockAt(Block.YELLOW, Position.createAt(2, 2))//
+				.addBlockAt(Block.RED_ORANGE, Position.createAt(0, 3))//
+				.addBlockAt(Block.ORANGE, Position.createAt(1, 3))//
+				.addBlockAt(Block.RED, Position.createAt(2, 3))//
+				.addBlockAt(Block.ORANGE, Position.createAt(3, 3));
 		assertTrue(actual.equals(expected));
 	}
 
 	private Grid createSampleGrid() {
-		grid.addBlockAt(Block.RED_ORANGE, Position.createAt(0, 0));
-		grid.addBlockAt(Block.GREEN, Position.createAt(1, 0));
-		grid.addBlockAt(Block.YELLOW_ORANGE, Position.createAt(2, 0));
-		grid.addBlockAt(Block.YELLOW, Position.createAt(0, 1));
-		grid.addBlockAt(Block.YELLOW_GREEN, Position.createAt(1, 1));
-		grid.addBlockAt(Block.YELLOW_ORANGE, Position.createAt(2, 1));
-		grid.addBlockAt(Block.RED_ORANGE, Position.createAt(3, 1));
-		grid.addBlockAt(Block.RED, Position.createAt(0, 2));
-		grid.addBlockAt(Block.ORANGE, Position.createAt(1, 2));
-		grid.addBlockAt(Block.RED, Position.createAt(2, 2));
-		grid.addBlockAt(Block.RED, Position.createAt(0, 3));
-		grid.addBlockAt(Block.RED_ORANGE, Position.createAt(3, 3));
+		grid.addBlockAt(Block.RED_ORANGE, Position.createAt(0, 0))//
+				.addBlockAt(Block.GREEN, Position.createAt(1, 0))//
+				.addBlockAt(Block.YELLOW_ORANGE, Position.createAt(2, 0))//
+				.addBlockAt(Block.YELLOW, Position.createAt(0, 1))//
+				.addBlockAt(Block.YELLOW_GREEN, Position.createAt(1, 1))//
+				.addBlockAt(Block.YELLOW_ORANGE, Position.createAt(2, 1))//
+				.addBlockAt(Block.RED_ORANGE, Position.createAt(3, 1))//
+				.addBlockAt(Block.RED, Position.createAt(0, 2))//
+				.addBlockAt(Block.ORANGE, Position.createAt(1, 2))//
+				.addBlockAt(Block.RED, Position.createAt(2, 2))//
+				.addBlockAt(Block.RED, Position.createAt(0, 3))//
+				.addBlockAt(Block.RED_ORANGE, Position.createAt(3, 3));
 		Grid clone = grid.clone();
 		resetGrid();
 		return clone;
@@ -81,15 +81,15 @@ public class GridTests {
 		Grid actual = createSampleGrid();
 		actual.up();
 		Grid expected = Grid.create();
-		expected.addBlockAt(Block.RED_ORANGE, Position.createAt(0, 0));
-		expected.addBlockAt(Block.GREEN, Position.createAt(1, 0));
-		expected.addBlockAt(Block.YELLOW, Position.createAt(2, 0));
-		expected.addBlockAt(Block.ORANGE, Position.createAt(3, 0));
-		expected.addBlockAt(Block.YELLOW, Position.createAt(0, 1));
-		expected.addBlockAt(Block.YELLOW_GREEN, Position.createAt(1, 1));
-		expected.addBlockAt(Block.RED, Position.createAt(2, 1));
-		expected.addBlockAt(Block.RED_ORANGE, Position.createAt(0, 2));
-		expected.addBlockAt(Block.ORANGE, Position.createAt(1, 2));
+		expected.addBlockAt(Block.RED_ORANGE, Position.createAt(0, 0))//
+				.addBlockAt(Block.GREEN, Position.createAt(1, 0))//
+				.addBlockAt(Block.YELLOW, Position.createAt(2, 0))//
+				.addBlockAt(Block.ORANGE, Position.createAt(3, 0))//
+				.addBlockAt(Block.YELLOW, Position.createAt(0, 1))//
+				.addBlockAt(Block.YELLOW_GREEN, Position.createAt(1, 1))//
+				.addBlockAt(Block.RED, Position.createAt(2, 1))//
+				.addBlockAt(Block.RED_ORANGE, Position.createAt(0, 2))//
+				.addBlockAt(Block.ORANGE, Position.createAt(1, 2));
 		printGrids(actual, expected);
 		assertTrue(actual.equals(expected));
 	}

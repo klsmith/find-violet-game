@@ -23,8 +23,9 @@ public class Grid {
 		return new Grid();
 	}
 
-	public void addBlockAt(Block block, Position position) {
+	public Grid addBlockAt(Block block, Position position) {
 		array[getCoordinateValueOf(position)] = block;
+		return this;
 	}
 
 	public Block getBlockAt(Position position) {
