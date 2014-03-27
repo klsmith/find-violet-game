@@ -8,7 +8,7 @@ public abstract class GridShifter {
 
 	public static void shiftToRight(Grid grid) {
 		thisGrid = grid;
-		currentPosition = Position.createAt(Grid.RIGHT_X, Grid.TOP_Y);
+		currentPosition = Position.createAt(Grid.RIGHT_INDEX, Grid.TOP_INDEX);
 		while (currentPositionIsNotAtBottom()) {
 			newPosition = currentPosition.clone();
 			while (currentPositionIsNotAtLeft()) {
@@ -18,17 +18,17 @@ public abstract class GridShifter {
 				}
 				currentPosition.moveLeft();
 			}
-			currentPosition.setX(Grid.RIGHT_X);
+			currentPosition.setX(Grid.RIGHT_INDEX);
 			currentPosition.moveDown();
 		}
 	}
 
 	private static boolean currentPositionIsNotAtBottom() {
-		return currentPosition.getY() <= Grid.BOTTOM_Y;
+		return currentPosition.getY() <= Grid.BOTTOM_INDEX;
 	}
 
 	private static boolean currentPositionIsNotAtLeft() {
-		return currentPosition.getX() >= Grid.LEFT_X;
+		return currentPosition.getX() >= Grid.LEFT_INDEX;
 	}
 
 	private static void moveBlockToNewPosition() {
@@ -39,7 +39,7 @@ public abstract class GridShifter {
 
 	public static void shiftToLeft(Grid grid) {
 		thisGrid = grid;
-		currentPosition = Position.createAt(Grid.LEFT_X, Grid.TOP_Y);
+		currentPosition = Position.createAt(Grid.LEFT_INDEX, Grid.TOP_INDEX);
 		while (currentPositionIsNotAtBottom()) {
 			newPosition = currentPosition.clone();
 			while (currentPositionIsNotAtRight()) {
@@ -49,19 +49,19 @@ public abstract class GridShifter {
 				}
 				currentPosition.moveRight();
 			}
-			currentPosition.setX(Grid.LEFT_X);
+			currentPosition.setX(Grid.LEFT_INDEX);
 			currentPosition.moveDown();
 
 		}
 	}
 
 	private static boolean currentPositionIsNotAtRight() {
-		return currentPosition.getX() <= Grid.RIGHT_X;
+		return currentPosition.getX() <= Grid.RIGHT_INDEX;
 	}
 
 	public static void shiftToBottom(Grid grid) {
 		thisGrid = grid;
-		currentPosition = Position.createAt(Grid.RIGHT_X, Grid.BOTTOM_Y);
+		currentPosition = Position.createAt(Grid.RIGHT_INDEX, Grid.BOTTOM_INDEX);
 		while (currentPositionIsNotAtLeft()) {
 			newPosition = currentPosition.clone();
 			while (currentPoitionIsNotAtTop()) {
@@ -71,18 +71,18 @@ public abstract class GridShifter {
 				}
 				currentPosition.moveUp();
 			}
-			currentPosition.setY(Grid.BOTTOM_Y);
+			currentPosition.setY(Grid.BOTTOM_INDEX);
 			currentPosition.moveLeft();
 		}
 	}
 
 	private static boolean currentPoitionIsNotAtTop() {
-		return currentPosition.getY() >= Grid.TOP_Y;
+		return currentPosition.getY() >= Grid.TOP_INDEX;
 	}
 
 	public static void shiftToTop(Grid grid) {
 		thisGrid = grid;
-		currentPosition = Position.createAt(Grid.RIGHT_X, Grid.TOP_Y);
+		currentPosition = Position.createAt(Grid.RIGHT_INDEX, Grid.TOP_INDEX);
 		while (currentPositionIsNotAtLeft()) {
 			newPosition = currentPosition.clone();
 			while (currentPositionIsNotAtBottom()) {
@@ -92,7 +92,7 @@ public abstract class GridShifter {
 				}
 				currentPosition.moveDown();
 			}
-			currentPosition.setY(Grid.TOP_Y);
+			currentPosition.setY(Grid.TOP_INDEX);
 			currentPosition.moveLeft();
 		}
 	}

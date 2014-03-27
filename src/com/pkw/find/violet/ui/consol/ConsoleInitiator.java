@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import com.pkw.find.violet.Game;
 
-public class FindVioletDriver {
+public class ConsoleInitiator {
 
 	public static void main(String[] args) {
 		Game game = Game.start();

@@ -1,12 +1,17 @@
 package com.pkw.find.violet;
 
+import java.awt.Color;
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
+
 public class Grid {
 
 	public static final int SIZE = 4;
-	public static final int LEFT_X = 0;
-	public static final int TOP_Y = 0;
-	public static final int RIGHT_X = 3;
-	public static final int BOTTOM_Y = 3;
+	public static final int LEFT_INDEX = 0;
+	public static final int TOP_INDEX = 0;
+	public static final int RIGHT_INDEX = 3;
+	public static final int BOTTOM_INDEX = 3;
+	public static final int GRID_SIZE_IN_PIXELS = 128;
 	public static final Block EMPTY = Block.NONE;
 
 	private Block[] array = {//
@@ -46,8 +51,8 @@ public class Grid {
 	public Grid clone() {
 		Grid newGrid = new Grid();
 		Position currentPosition = Position.createAt(0, 0);
-		while (currentPosition.getY() <= BOTTOM_Y) {
-			while (currentPosition.getX() <= RIGHT_X) {
+		while (currentPosition.getY() <= BOTTOM_INDEX) {
+			while (currentPosition.getX() <= RIGHT_INDEX) {
 				Block block = getBlockAt(currentPosition);
 				newGrid.addBlockAt(block, currentPosition);
 				currentPosition.moveRight();
@@ -95,8 +100,8 @@ public class Grid {
 
 	public boolean hasSameBlockPositionsAs(Grid otherGrid) {
 		Position currentPosition = Position.createAt(0, 0);
-		while (currentPosition.getY() <= BOTTOM_Y) {
-			while (currentPosition.getX() <= RIGHT_X) {
+		while (currentPosition.getY() <= BOTTOM_INDEX) {
+			while (currentPosition.getX() <= RIGHT_INDEX) {
 				Block block = getBlockAt(currentPosition);
 				Block otherBlock = otherGrid.getBlockAt(currentPosition);
 				if (!block.equals(otherBlock)) {
@@ -136,5 +141,40 @@ public class Grid {
 		GridCombiner.combineToBottom(this);
 		GridShifter.shiftToBottom(this);
 
+	}
+
+	public void draw(Graphics2D drawer) {
+		Position currentPosition = Position.createAt(0, 0);
+		while (isNotAtBottom(currentPosition)) {
+			while (isNotAtRight(currentPosition)) {
+				drawBlockAt(drawer, currentPosition);
+				currentPosition.moveRight();
+			}
+			currentPosition.setX(0);
+			currentPosition.moveDown();
+		}
+	}
+
+	private boolean isNotAtBottom(Position position) {
+		return position.getY() <= Grid.BOTTOM_INDEX;
+	}
+
+	private boolean isNotAtRight(Position position) {
+		return position.getX() <= Grid.RIGHT_INDEX;
+	}
+
+	private void drawBlockAt(Graphics2D drawer, Position position) {
+		Block block = getBlockAt(position);
+
+		int x = position.getX() * GRID_SIZE_IN_PIXELS;
+		int y = position.getY() * GRID_SIZE_IN_PIXELS;
+		drawer.setColor(block.getAWTColor());
+		drawer.fill(new Rectangle(x, y, GRID_SIZE_IN_PIXELS,
+				GRID_SIZE_IN_PIXELS));
+		drawer.setColor(Color.BLACK);
+		int center = GRID_SIZE_IN_PIXELS / 2;
+		drawer.drawString("" + block.getNumber(), x + center, y + center);
+		drawer.draw(new Rectangle(x, y, GRID_SIZE_IN_PIXELS,
+				GRID_SIZE_IN_PIXELS));
 	}
 }

@@ -1,5 +1,6 @@
 package com.pkw.find.violet;
 
+import java.awt.Graphics2D;
 import java.util.Random;
 
 public class Game {
@@ -11,6 +12,10 @@ public class Game {
 	}
 
 	private Game() {
+		actionRestart();
+	}
+
+	public void actionRestart() {
 		grid = Grid.create();
 		addRandomRedOrRedOrange();
 		addRandomRedOrRedOrange();
@@ -50,11 +55,11 @@ public class Game {
 	}
 
 	private boolean isNotAtBottom(Position position) {
-		return position.getY() <= Grid.BOTTOM_Y;
+		return position.getY() <= Grid.BOTTOM_INDEX;
 	}
 
 	private boolean isNotAtRight(Position position) {
-		return position.getX() <= Grid.RIGHT_X;
+		return position.getX() <= Grid.RIGHT_INDEX;
 	}
 
 	public void actionLeft() {
@@ -91,5 +96,9 @@ public class Game {
 
 	public void printGrid() {
 		System.out.println(grid);
+	}
+
+	public void draw(Graphics2D drawer) {
+		grid.draw(drawer);
 	}
 }

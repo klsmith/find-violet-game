@@ -22,19 +22,19 @@ public abstract class GridCombiner {
 	}
 
 	private static void startAtTopRight() {
-		currentPosition = Position.createAt(Grid.RIGHT_X, Grid.TOP_Y);
+		currentPosition = Position.createAt(Grid.RIGHT_INDEX, Grid.TOP_INDEX);
 	}
 
 	private static boolean isNotAtBottom(Position position) {
-		return position.getY() <= Grid.BOTTOM_Y;
+		return position.getY() <= Grid.BOTTOM_INDEX;
 	}
 
 	private static boolean isNotAtLeft(Position position) {
-		return position.getX() >= Grid.LEFT_X;
+		return position.getX() >= Grid.LEFT_INDEX;
 	}
 
 	private static void resetToRight() {
-		currentPosition.setX(Grid.RIGHT_X);
+		currentPosition.setX(Grid.RIGHT_INDEX);
 	}
 
 	private static void combineNextSimilarBlockFromLeft() {
@@ -80,15 +80,15 @@ public abstract class GridCombiner {
 	}
 
 	private static void resetToLeft() {
-		currentPosition.setX(Grid.LEFT_X);
+		currentPosition.setX(Grid.LEFT_INDEX);
 	}
 
 	private static void startAtTopLeft() {
-		currentPosition = Position.createAt(Grid.LEFT_X, Grid.TOP_Y);
+		currentPosition = Position.createAt(Grid.LEFT_INDEX, Grid.TOP_INDEX);
 	}
 
 	private static boolean isNotAtRight(Position position) {
-		return position.getX() <= Grid.RIGHT_X;
+		return position.getX() <= Grid.RIGHT_INDEX;
 	}
 
 	private static void combineNextSimilarBlockFromRight() {
@@ -122,11 +122,11 @@ public abstract class GridCombiner {
 	}
 
 	private static void startAtBottomLeft() {
-		currentPosition = Position.createAt(Grid.LEFT_X, Grid.BOTTOM_Y);
+		currentPosition = Position.createAt(Grid.LEFT_INDEX, Grid.BOTTOM_INDEX);
 	}
 
 	private static boolean isNotAtTop(Position position) {
-		return position.getY() >= Grid.TOP_Y;
+		return position.getY() >= Grid.TOP_INDEX;
 	}
 
 	private static void combineNextSimilarBlockFromBottom() {
@@ -145,7 +145,7 @@ public abstract class GridCombiner {
 	}
 
 	private static void resetToTop() {
-		currentPosition.setY(Grid.TOP_Y);
+		currentPosition.setY(Grid.TOP_INDEX);
 	}
 
 	public static void combineToBottom(Grid grid) {
@@ -179,7 +179,7 @@ public abstract class GridCombiner {
 	}
 
 	private static void resetToBottom() {
-		currentPosition.setY(Grid.BOTTOM_Y);
+		currentPosition.setY(Grid.BOTTOM_INDEX);
 	}
 
 }

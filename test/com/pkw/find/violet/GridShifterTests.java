@@ -73,7 +73,7 @@ public class GridShifterTests {
 	}
 
 	private void fillGridToBottomStartingAt(Position currentPosition) {
-		while (currentPosition.getY() <= Grid.BOTTOM_Y) {
+		while (currentPosition.getY() <= Grid.BOTTOM_INDEX) {
 			grid.addBlockAt(Block.RED, currentPosition);
 			currentPosition.moveDown();
 		}
@@ -114,7 +114,7 @@ public class GridShifterTests {
 	}
 
 	private void fillGridToRightStartingAt(Position position) {
-		while (position.getX() <= Grid.RIGHT_X) {
+		while (position.getX() <= Grid.RIGHT_INDEX) {
 			grid.addBlockAt(Block.RED, position);
 			position.moveRight();
 		}
