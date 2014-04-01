@@ -11,7 +11,7 @@ public class Grid {
 	public static final int TOP_INDEX = 0;
 	public static final int RIGHT_INDEX = 3;
 	public static final int BOTTOM_INDEX = 3;
-	public static final int GRID_SIZE_IN_PIXELS = 128;
+	public static final int BLOCK_SIZE_IN_PIXELS = 128;
 	public static final Block EMPTY = Block.NONE;
 
 	private Block[] array = {//
@@ -166,15 +166,17 @@ public class Grid {
 	private void drawBlockAt(Graphics2D drawer, Position position) {
 		Block block = getBlockAt(position);
 
-		int x = position.getX() * GRID_SIZE_IN_PIXELS;
-		int y = position.getY() * GRID_SIZE_IN_PIXELS;
+		int x = position.getX() * BLOCK_SIZE_IN_PIXELS;
+		int y = position.getY() * BLOCK_SIZE_IN_PIXELS;
 		drawer.setColor(block.getAWTColor());
-		drawer.fill(new Rectangle(x, y, GRID_SIZE_IN_PIXELS,
-				GRID_SIZE_IN_PIXELS));
+		drawer.fill(new Rectangle(x, y, BLOCK_SIZE_IN_PIXELS,
+				BLOCK_SIZE_IN_PIXELS));
 		drawer.setColor(Color.BLACK);
-		int center = GRID_SIZE_IN_PIXELS / 2;
-		drawer.drawString("" + block.getNumber(), x + center, y + center);
-		drawer.draw(new Rectangle(x, y, GRID_SIZE_IN_PIXELS,
-				GRID_SIZE_IN_PIXELS));
+		int center = BLOCK_SIZE_IN_PIXELS / 2;
+		if (!block.equals(EMPTY)) {
+			drawer.drawString("" + block.getNumber(), x + center, y + center);
+		}
+		drawer.draw(new Rectangle(x, y, BLOCK_SIZE_IN_PIXELS,
+				BLOCK_SIZE_IN_PIXELS));
 	}
 }

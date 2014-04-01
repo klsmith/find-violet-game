@@ -31,12 +31,16 @@ public class Game {
 			randomY = random.nextInt(Grid.SIZE);
 			randomPosition = Position.createAt(randomX, randomY);
 		}
-		Boolean randomIsRed = random.nextBoolean();
-		if (randomIsRed) {
+		if (randomIsRed()) {
 			grid.addBlockAt(Block.RED, randomPosition);
 		} else {
 			grid.addBlockAt(Block.RED_ORANGE, randomPosition);
 		}
+	}
+
+	private boolean randomIsRed() {
+		Random random = new Random();
+		return random.nextInt(4) < 3;
 	}
 
 	public boolean gridIsFull() {
