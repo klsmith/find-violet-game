@@ -1,6 +1,8 @@
 package com.pkw.find.violet;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
@@ -13,6 +15,8 @@ public class Grid {
 	public static final int BOTTOM_INDEX = 3;
 	public static final int BLOCK_SIZE_IN_PIXELS = 128;
 	public static final Block EMPTY = Block.NONE;
+	private static final Rectangle base = new Rectangle(0, 0,
+			BLOCK_SIZE_IN_PIXELS * SIZE + 5, BLOCK_SIZE_IN_PIXELS * SIZE + 5);
 
 	private Block[] array = {//
 	EMPTY, EMPTY, EMPTY, EMPTY,//
@@ -144,6 +148,8 @@ public class Grid {
 	}
 
 	public void draw(Graphics2D drawer) {
+		drawer.setColor(Color.BLACK);
+		drawer.fill(base);
 		Position currentPosition = Position.createAt(0, 0);
 		while (isNotAtBottom(currentPosition)) {
 			while (isNotAtRight(currentPosition)) {
@@ -165,18 +171,19 @@ public class Grid {
 
 	private void drawBlockAt(Graphics2D drawer, Position position) {
 		Block block = getBlockAt(position);
-
 		int x = position.getX() * BLOCK_SIZE_IN_PIXELS;
 		int y = position.getY() * BLOCK_SIZE_IN_PIXELS;
 		drawer.setColor(block.getAWTColor());
-		drawer.fill(new Rectangle(x, y, BLOCK_SIZE_IN_PIXELS,
-				BLOCK_SIZE_IN_PIXELS));
+		drawer.fillRoundRect(x, y, BLOCK_SIZE_IN_PIXELS, BLOCK_SIZE_IN_PIXELS,
+				50, 50);
 		drawer.setColor(Color.BLACK);
 		int center = BLOCK_SIZE_IN_PIXELS / 2;
 		if (!block.equals(EMPTY)) {
+			drawer.setFont(Font.getFont(Font.SANS_SERIF));
 			drawer.drawString("" + block.getNumber(), x + center, y + center);
 		}
-		drawer.draw(new Rectangle(x, y, BLOCK_SIZE_IN_PIXELS,
-				BLOCK_SIZE_IN_PIXELS));
+		drawer.setStroke(new BasicStroke(6));
+		drawer.drawRoundRect(x, y, BLOCK_SIZE_IN_PIXELS, BLOCK_SIZE_IN_PIXELS,
+				50, 50);
 	}
 }

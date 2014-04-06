@@ -1,21 +1,19 @@
 package com.pkw.find.violet.ui.swing;
 
-import java.applet.Applet;
 import java.awt.Dimension;
+
+import javax.swing.JApplet;
 
 import com.pkw.find.violet.Game;
 
-public class AppletInitiator extends Applet {
+public class AppletInitiator extends JApplet {
 	private static final long serialVersionUID = 1620319916520424064L;
 
 	GridComponent screen;
 
-	public static void main(String[] args) {
-		new AppletInitiator();
-	}
-
 	@Override
 	public void init() {
+		super.init();
 		Dimension dimension = screen.getPreferredSize();
 		int width = (int) dimension.getWidth();
 		int height = (int) dimension.getHeight();
