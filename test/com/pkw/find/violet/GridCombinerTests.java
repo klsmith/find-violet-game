@@ -7,21 +7,21 @@ import org.junit.Test;
 public class GridCombinerTests {
 
 	@Test
-	public void testTwoRedBlockCombineToRightOneRedOrangeBlock() {
+	public void testTwoTwoBlockCombineToRightOneFourBlock() {
 		Grid actual = Grid.create();
-		actual.addBlockAt(Block.RED,
+		actual.addBlockAt(Block.TWO,
 				Position.createAt(Grid.RIGHT_INDEX, Grid.TOP_INDEX));
-		actual.addBlockAt(Block.RED,
+		actual.addBlockAt(Block.TWO,
 				Position.createAt(Grid.RIGHT_INDEX - 1, Grid.TOP_INDEX));
 		GridCombiner.combineToRight(actual);
 		Grid expected = Grid.create();
-		expected.addBlockAt(Block.RED_ORANGE,
+		expected.addBlockAt(Block.FOUR,
 				Position.createAt(Grid.RIGHT_INDEX, Grid.TOP_INDEX));
 		assertTrue(actual.equals(expected));
 	}
 
 	@Test
-	public void testTwoRedBlockCombineToRightOneRedOrangeBlockMultipleLines() {
+	public void testTwoTwoBlockCombineToRightOneFourBlockMultipleLines() {
 		Grid actual = Grid.create();
 		fillTwoRightColumns(actual);
 		GridCombiner.combineToRight(actual);
@@ -37,11 +37,12 @@ public class GridCombinerTests {
 	// }
 
 	private void fillTwoRightColumns(Grid grid) {
-		Position currentPosition = Position.createAt(Grid.RIGHT_INDEX, Grid.TOP_INDEX);
+		Position currentPosition = Position.createAt(Grid.RIGHT_INDEX,
+				Grid.TOP_INDEX);
 		while (currentPosition.getY() <= Grid.BOTTOM_INDEX) {
-			grid.addBlockAt(Block.RED, currentPosition);
+			grid.addBlockAt(Block.TWO, currentPosition);
 			currentPosition.moveLeft();
-			grid.addBlockAt(Block.RED, currentPosition);
+			grid.addBlockAt(Block.TWO, currentPosition);
 			currentPosition.setX(Grid.RIGHT_INDEX);
 			currentPosition.moveDown();
 		}
@@ -49,26 +50,27 @@ public class GridCombinerTests {
 
 	private void fillGridToBottomStartingAt(Grid grid, Position currentPosition) {
 		while (currentPosition.getY() <= Grid.BOTTOM_INDEX) {
-			grid.addBlockAt(Block.RED_ORANGE, currentPosition);
+			grid.addBlockAt(Block.FOUR, currentPosition);
 			currentPosition.moveDown();
 		}
 	}
 
 	@Test
-	public void testTwoRedBlockCombineToLeftOneRedOrangeBlock() {
+	public void testTwoTwoBlockCombineToLeftOneFourBlock() {
 		Grid actual = Grid.create();
-		actual.addBlockAt(Block.RED, Position.createAt(Grid.LEFT_INDEX, Grid.TOP_INDEX));
-		actual.addBlockAt(Block.RED,
+		actual.addBlockAt(Block.TWO,
+				Position.createAt(Grid.LEFT_INDEX, Grid.TOP_INDEX));
+		actual.addBlockAt(Block.TWO,
 				Position.createAt(Grid.LEFT_INDEX + 1, Grid.TOP_INDEX));
 		GridCombiner.combineToLeft(actual);
 		Grid expected = Grid.create();
-		expected.addBlockAt(Block.RED_ORANGE,
+		expected.addBlockAt(Block.FOUR,
 				Position.createAt(Grid.LEFT_INDEX, Grid.TOP_INDEX));
 		assertTrue(actual.equals(expected));
 	}
 
 	@Test
-	public void testTwoRedBlockCombineToLeftOneRedOrangeBlockMultipleLines() {
+	public void testTwoTwoBlockCombineToLeftOneFourBlockMultipleLines() {
 		Grid actual = Grid.create();
 		fillTwoLeftColumns(actual);
 		GridCombiner.combineToLeft(actual);
@@ -79,31 +81,33 @@ public class GridCombinerTests {
 	}
 
 	private void fillTwoLeftColumns(Grid grid) {
-		Position currentPosition = Position.createAt(Grid.LEFT_INDEX, Grid.TOP_INDEX);
+		Position currentPosition = Position.createAt(Grid.LEFT_INDEX,
+				Grid.TOP_INDEX);
 		while (currentPosition.getY() <= Grid.BOTTOM_INDEX) {
-			grid.addBlockAt(Block.RED, currentPosition);
+			grid.addBlockAt(Block.TWO, currentPosition);
 			currentPosition.moveRight();
-			grid.addBlockAt(Block.RED, currentPosition);
+			grid.addBlockAt(Block.TWO, currentPosition);
 			currentPosition.setX(Grid.LEFT_INDEX);
 			currentPosition.moveDown();
 		}
 	}
 
 	@Test
-	public void testTwoRedBlockCombineToTopOneRedOrangeBlock() {
+	public void testTwoTwoBlockCombineToTopOneFourBlock() {
 		Grid actual = Grid.create();
-		actual.addBlockAt(Block.RED, Position.createAt(Grid.LEFT_INDEX, Grid.TOP_INDEX));
-		actual.addBlockAt(Block.RED,
+		actual.addBlockAt(Block.TWO,
+				Position.createAt(Grid.LEFT_INDEX, Grid.TOP_INDEX));
+		actual.addBlockAt(Block.TWO,
 				Position.createAt(Grid.LEFT_INDEX, Grid.TOP_INDEX + 1));
 		GridCombiner.combineToTop(actual);
 		Grid expected = Grid.create();
-		expected.addBlockAt(Block.RED_ORANGE,
+		expected.addBlockAt(Block.FOUR,
 				Position.createAt(Grid.LEFT_INDEX, Grid.TOP_INDEX));
 		assertTrue(actual.equals(expected));
 	}
 
 	@Test
-	public void testTwoRedBlockCombineToTopOneRedOrangeBlockMultipleLines() {
+	public void testTwoTwoBlockCombineToTopOneFourBlockMultipleLines() {
 		Grid actual = Grid.create();
 		fillTwoTopRows(actual);
 		GridCombiner.combineToTop(actual);
@@ -114,11 +118,12 @@ public class GridCombinerTests {
 	}
 
 	private void fillTwoTopRows(Grid grid) {
-		Position currentPosition = Position.createAt(Grid.LEFT_INDEX, Grid.TOP_INDEX);
+		Position currentPosition = Position.createAt(Grid.LEFT_INDEX,
+				Grid.TOP_INDEX);
 		while (currentPosition.getX() <= Grid.RIGHT_INDEX) {
-			grid.addBlockAt(Block.RED, currentPosition);
+			grid.addBlockAt(Block.TWO, currentPosition);
 			currentPosition.moveDown();
-			grid.addBlockAt(Block.RED, currentPosition);
+			grid.addBlockAt(Block.TWO, currentPosition);
 			currentPosition.setY(Grid.TOP_INDEX);
 			currentPosition.moveRight();
 		}
@@ -126,21 +131,21 @@ public class GridCombinerTests {
 
 	private void fillGridToRightStartingAt(Grid grid, Position position) {
 		while (position.getX() <= Grid.RIGHT_INDEX) {
-			grid.addBlockAt(Block.RED_ORANGE, position);
+			grid.addBlockAt(Block.FOUR, position);
 			position.moveRight();
 		}
 	}
 
 	@Test
-	public void testTwoRedBlockCombineToBottomOneRedOrangeBlock() {
+	public void testTwoTwoBlockCombineToBottomOneFourBlock() {
 		Grid actual = Grid.create();
-		actual.addBlockAt(Block.RED,
+		actual.addBlockAt(Block.TWO,
 				Position.createAt(Grid.LEFT_INDEX, Grid.BOTTOM_INDEX));
-		actual.addBlockAt(Block.RED,
+		actual.addBlockAt(Block.TWO,
 				Position.createAt(Grid.LEFT_INDEX, Grid.BOTTOM_INDEX - 1));
 		GridCombiner.combineToBottom(actual);
 		Grid expected = Grid.create();
-		expected.addBlockAt(Block.RED_ORANGE,
+		expected.addBlockAt(Block.FOUR,
 				Position.createAt(Grid.LEFT_INDEX, Grid.BOTTOM_INDEX));
 		assertTrue(actual.equals(expected));
 	}

@@ -32,9 +32,9 @@ public class Game {
 			randomPosition = Position.createAt(randomX, randomY);
 		}
 		if (randomIsRed()) {
-			grid.addBlockAt(Block.RED, randomPosition);
+			grid.addBlockAt(Block.TWO, randomPosition);
 		} else {
-			grid.addBlockAt(Block.RED_ORANGE, randomPosition);
+			grid.addBlockAt(Block.FOUR, randomPosition);
 		}
 	}
 

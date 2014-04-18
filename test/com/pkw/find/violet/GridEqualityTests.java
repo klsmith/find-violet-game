@@ -26,18 +26,18 @@ public class GridEqualityTests {
 	@Test
 	public void testGridsHaveBlocksAtSameLocation() {
 		Grid actual = Grid.create();
-		actual.addBlockAt(Block.RED, topLeft);
+		actual.addBlockAt(Block.TWO, topLeft);
 		Grid expected = Grid.create();
-		expected.addBlockAt(Block.RED, topLeft);
+		expected.addBlockAt(Block.TWO, topLeft);
 		assertTrue(actual.equals(expected));
 	}
 
 	@Test
 	public void testGridsHaveBlocksNotSameLocation() {
 		Grid actual = Grid.create();
-		actual.addBlockAt(Block.RED, topLeft);
+		actual.addBlockAt(Block.TWO, topLeft);
 		Grid notExpected = Grid.create();
-		notExpected.addBlockAt(Block.RED, Position.createAt(3, 0));
+		notExpected.addBlockAt(Block.TWO, Position.createAt(3, 0));
 		assertFalse(actual.equals(notExpected));
 	}
 }

@@ -44,6 +44,7 @@ public abstract class GridCombiner {
 			if (thisGrid.hasBlockAt(scanPosition)) {
 				if (foundBlockIsSimilar()) {
 					combine();
+					currentPosition.moveLeft();
 				} else {
 					return;
 				}

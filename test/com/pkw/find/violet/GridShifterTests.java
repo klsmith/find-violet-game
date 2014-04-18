@@ -29,34 +29,34 @@ public class GridShifterTests {
 
 	@Test
 	public void testOneREDBlockShiftRight() {
-		grid.addBlockAt(Block.RED, topLeft);
+		grid.addBlockAt(Block.TWO, topLeft);
 		GridShifter.shiftToRight(grid);
 		Grid actual = grid.clone();
 		resetGrid();
-		grid.addBlockAt(Block.RED, topRight);
+		grid.addBlockAt(Block.TWO, topRight);
 		Grid expected = grid.clone();
 		assertTrue(actual.equals(expected));
 	}
 
 	@Test
 	public void testOneREDBlockShiftLeft() {
-		grid.addBlockAt(Block.RED, topRight);
+		grid.addBlockAt(Block.TWO, topRight);
 		GridShifter.shiftToLeft(grid);
 		Grid actual = grid.clone();
 		resetGrid();
-		grid.addBlockAt(Block.RED, topLeft);
+		grid.addBlockAt(Block.TWO, topLeft);
 		Grid expected = grid.clone();
 		assertTrue(actual.equals(expected));
 	}
 
 	@Test
 	public void testOneREDBlockShiftRightThenLeft() {
-		grid.addBlockAt(Block.RED, topLeft);
+		grid.addBlockAt(Block.TWO, topLeft);
 		GridShifter.shiftToRight(grid);
 		GridShifter.shiftToLeft(grid);
 		Grid actual = grid.clone();
 		resetGrid();
-		grid.addBlockAt(Block.RED, topLeft);
+		grid.addBlockAt(Block.TWO, topLeft);
 		Grid expected = grid.clone();
 		assertTrue(actual.equals(expected));
 	}
@@ -74,7 +74,7 @@ public class GridShifterTests {
 
 	private void fillGridToBottomStartingAt(Position currentPosition) {
 		while (currentPosition.getY() <= Grid.BOTTOM_INDEX) {
-			grid.addBlockAt(Block.RED, currentPosition);
+			grid.addBlockAt(Block.TWO, currentPosition);
 			currentPosition.moveDown();
 		}
 	}
@@ -92,11 +92,11 @@ public class GridShifterTests {
 
 	@Test
 	public void testREDBlockShiftDown() {
-		grid.addBlockAt(Block.RED, topRight);
+		grid.addBlockAt(Block.TWO, topRight);
 		GridShifter.shiftToBottom(grid);
 		Grid actual = grid.clone();
 		resetGrid();
-		grid.addBlockAt(Block.RED, bottomRight);
+		grid.addBlockAt(Block.TWO, bottomRight);
 		Grid expected = grid.clone();
 		assertTrue(actual.equals(expected));
 	}
@@ -115,18 +115,18 @@ public class GridShifterTests {
 
 	private void fillGridToRightStartingAt(Position position) {
 		while (position.getX() <= Grid.RIGHT_INDEX) {
-			grid.addBlockAt(Block.RED, position);
+			grid.addBlockAt(Block.TWO, position);
 			position.moveRight();
 		}
 	}
 
 	@Test
 	public void testRedBlockShiftUp() {
-		grid.addBlockAt(Block.RED, bottomLeft);
+		grid.addBlockAt(Block.TWO, bottomLeft);
 		GridShifter.shiftToTop(grid);
 		Grid actual = grid.clone();
 		resetGrid();
-		grid.addBlockAt(Block.RED, topLeft);
+		grid.addBlockAt(Block.TWO, topLeft);
 		Grid expected = grid.clone();
 		assertTrue(actual.equals(expected));
 	}

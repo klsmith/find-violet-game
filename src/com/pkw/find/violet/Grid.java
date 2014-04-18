@@ -14,7 +14,7 @@ public class Grid {
 	public static final int RIGHT_INDEX = 3;
 	public static final int BOTTOM_INDEX = 3;
 	public static final int BLOCK_SIZE_IN_PIXELS = 128;
-	public static final Block EMPTY = Block.NONE;
+	public static final Block EMPTY = Block.EMPTY;
 	private static final Rectangle base = new Rectangle(0, 0,
 			BLOCK_SIZE_IN_PIXELS * SIZE + 5, BLOCK_SIZE_IN_PIXELS * SIZE + 5);
 
@@ -177,10 +177,13 @@ public class Grid {
 		drawer.fillRoundRect(x, y, BLOCK_SIZE_IN_PIXELS, BLOCK_SIZE_IN_PIXELS,
 				50, 50);
 		drawer.setColor(Color.BLACK);
-		int center = BLOCK_SIZE_IN_PIXELS / 2;
+		int stringSize = ("" + block.getNumber()).length();
+		int center_x = BLOCK_SIZE_IN_PIXELS / 2 - ((stringSize * 16) / 2);
+		int center_y = BLOCK_SIZE_IN_PIXELS / 2 + 8;
 		if (!block.equals(EMPTY)) {
-			drawer.setFont(Font.getFont(Font.SANS_SERIF));
-			drawer.drawString("" + block.getNumber(), x + center, y + center);
+			drawer.setFont(new Font("Impact", Font.PLAIN, 34));
+			drawer.drawString("" + block.getNumber(), x + center_x, y
+					+ center_y);
 		}
 		drawer.setStroke(new BasicStroke(6));
 		drawer.drawRoundRect(x, y, BLOCK_SIZE_IN_PIXELS, BLOCK_SIZE_IN_PIXELS,

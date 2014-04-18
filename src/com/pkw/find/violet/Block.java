@@ -3,18 +3,18 @@ package com.pkw.find.violet;
 import java.awt.Color;
 
 public enum Block {
-	NONE(0, "   ", new Color(0, 0, 0)), //
-	RED(2, "RED", new Color(255, 0, 0)), //
-	RED_ORANGE(4, "ROR", new Color(255, 136, 0)), //
-	ORANGE(8, "ORG", new Color(238, 255, 0)), //
-	YELLOW_ORANGE(16, "YOR", new Color(136, 255, 0)), //
-	YELLOW(32, "YLW", new Color(0, 140, 0)), //
-	YELLOW_GREEN(64, "YGR", new Color(0, 255, 136)), //
-	GREEN(128, "GRN", new Color(0, 204, 255)), //
-	BLUE_GREEN(256, "BGR", new Color(0, 111, 166)), //
-	BLUE(512, "BLU", new Color(0, 0, 128)), //
-	BLUE_VIOLET(1024, "BVL", new Color(161, 115, 230)), //
-	VIOLET(2048, "VLT", new Color(204, 0, 255));
+	EMPTY(0, "    ", new Color(0, 0, 0)), //
+	TWO(2, "  2 ", new Color(255, 0, 0)), //
+	FOUR(4, "  4 ", new Color(255, 136, 0)), //
+	EIGHT(8, "  8 ", new Color(238, 255, 0)), //
+	SIXTEEN(16, " 16 ", new Color(136, 255, 0)), //
+	THIRTY_TWO(32, " 32 ", new Color(0, 140, 0)), //
+	SIXTY_FOUR(64, " 64 ", new Color(0, 255, 136)), //
+	ONE_TWENTY_EIGHT(128, " 128", new Color(0, 204, 255)), //
+	TWO_FIFTY_SIX(256, " 256", new Color(0, 111, 166)), //
+	FIVE_TWELVE(512, " 512", new Color(0, 0, 128)), //
+	TEN_TWENTY_FOUR(1024, "1024", new Color(161, 115, 230)), //
+	TWENTY_FORTY_EIGHT(2048, "2048", new Color(204, 0, 255));
 
 	private String abbreviation;
 	private int number;

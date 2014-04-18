@@ -7,15 +7,15 @@ public class BlockTests {
 
 	@Test
 	public void testREDgetNextIsREDORANGE() {
-		Block actual = Block.RED.getNext();
-		Block expected = Block.RED_ORANGE;
+		Block actual = Block.TWO.getNext();
+		Block expected = Block.FOUR;
 		assertEquals(expected, actual);
 	}
 
 	@Test
 	public void testVIOLETgetNextIsNONE() {
-		Block actual = Block.VIOLET.getNext();
-		Block expected = Block.NONE;
+		Block actual = Block.TWENTY_FORTY_EIGHT.getNext();
+		Block expected = Block.EMPTY;
 		assertEquals(expected, actual);
 	}
 }
