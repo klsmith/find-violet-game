@@ -77,7 +77,7 @@ public class Grid {
 			while (tempPosition.getX() < SIZE) {
 				Block block = getBlockAt(tempPosition);
 				String abbreviation = block.getAbbreviation();
-				result += "| " + abbreviation + " ";
+				result += "|" + abbreviation + " ";
 				tempPosition.moveRight();
 			}
 			result += "|\n";
