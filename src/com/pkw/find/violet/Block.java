@@ -1,8 +1,9 @@
 package com.pkw.find.violet;
 
 import java.awt.Color;
-//Hello World
+
 public enum Block {
+
 	EMPTY(0, "    ", new Color(0, 0, 0)), //
 	TWO(2, "  2 ", new Color(255, 0, 0)), //
 	FOUR(4, "  4 ", new Color(255, 136, 0)), //
